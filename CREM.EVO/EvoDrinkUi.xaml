@@ -1,0 +1,126 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:CREM.EVO"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="CREM.EVO.EvoDrinkUi"
+        Title="EvoDrinkUi" Height="800" Width="600">
+    <Viewbox Stretch="Fill">
+        <Grid Height="800" Width="600">
+            <Grid.Background>
+                <ImageBrush ImageSource="images/BG.jpg"/>
+            </Grid.Background>
+            <Grid x:Name="grd_layout1" d:IsHidden="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="1" Text="Choose a beverage" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FFFDDC63" Margin="176,20,176,0" />
+                <TextBlock Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="80" Height="80" Margin="256,76,264,0" >
+                    <TextBlock.Background>
+                        <ImageBrush ImageSource="images/Logo.png"/>
+                    </TextBlock.Background></TextBlock>
+                <TextBlock Name="tbdata" Text="2015-7-2 12:00" FontSize="36" Foreground="Purple" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20"></TextBlock>
+                <WrapPanel Grid.Row="0" Margin="0,100,0,0" >
+                    <Button x:Name="Btn1" Style="{StaticResource DrinkButtonStyle}" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Icon/Americano.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button  x:Name="Btn2" Style="{StaticResource DrinkButtonStyle}"  >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Icon/black coffee.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button  x:Name="Btn3" Style="{StaticResource DrinkButtonStyle}"  >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Icon/cafe crema.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button  x:Name="Btn4" Style="{StaticResource DrinkButtonStyle}"  >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Icon/Cafe Latte.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button  x:Name="Btn5" Style="{StaticResource DrinkButtonStyle}"  >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Icon/Cappuccino.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button  x:Name="Btn6" Style="{StaticResource DrinkButtonStyle}"   >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Icon/double espresso.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button  x:Name="Btn7" Style="{StaticResource DrinkButtonStyle}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Icon/single espresso.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button  x:Name="Btn8" Style="{StaticResource DrinkButtonStyle}"  >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Icon/Tea.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button  x:Name="Btn9" Style="{StaticResource DrinkButtonStyle}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Icon/double espresso.jpg"/>
+                        </Button.Background>
+                    </Button>
+                </WrapPanel>
+            </Grid>
+            <Grid x:Name="grd_preselect">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="120*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Button Name="btn_icon" Style="{StaticResource DrinkButtonStyle}" Margin="220,58,220,102">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Icon/Americano.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource BackButtonStyle}" Width="50" Margin="0,10,10,0" Click="Button_Click"></Button>
+                </Grid>
+                <Grid Grid.Row="1" Background="White" Opacity="0.4"/>
+                <Grid Grid.Row="1" Margin="0,0,0,60" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <!--<local:EvoPreselection Grid.Row="0" Text="Strenght."></local:EvoPreselection>
+                    <local:EvoPreselection Grid.Row="1" Text="Volume."></local:EvoPreselection>
+                    <local:EvoPreselection Grid.Row="2" Text="Milk."></local:EvoPreselection>-->
+                    <Button Name="btn_start" Grid.Row="3" Style="{StaticResource StartButtonStyle}" Click="Btn_start">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Icon/start.png" />
+                        </Button.Background>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1" Margin="150,40,150,220" Name="grd_fun"></Grid>
+                <Grid Grid.Row="1" Margin="150,280,150,150" Name="grd_cup">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Style="{StaticResource SubButtonStyle}" Click="cups_down"></Button>
+                    <Button Grid.Column="2" Style="{StaticResource AddButtonStyle}" Click="cups_up"></Button>
+                    <Grid Grid.Column="1" >
+                        <Grid.Background>
+                            <ImageBrush ImageSource="images/cups.png"/>
+                        </Grid.Background>
+                        <TextBlock Name="tb_cups" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" >1</TextBlock>
+                    </Grid>
+                    </Grid>
+            </Grid>
+            <Grid x:Name="grd_process" Background="White" Opacity="0.8" d:IsHidden="True">
+                <Grid Margin="0,300" Background="Black" Opacity="0.5">
+                    <TextBlock Text="Dispense,Please Wait" TextAlignment="Center" FontSize="48" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Grid>
+                <Button x:Name="btn_start_Copy" Style="{StaticResource StartButtonStyle}" Click="Btn_stop" Margin="258,662,262,58">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Icon/stop.png" />
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </Grid>
+    </Viewbox>
+</Window>

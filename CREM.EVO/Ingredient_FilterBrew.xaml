@@ -1,0 +1,110 @@
+﻿<Window x:Class="CREM.EVO.Ingredient_FilterBrew"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="400">
+    <Viewbox Stretch="Fill">
+        <Grid Height="300" Width="400">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid  Grid.Row="0" Background="WhiteSmoke">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Name" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="1" Margin="5" Text="{Binding Name}"></TextBox>
+            </Grid>
+            <Grid  Grid.Row="1" Background="Gray">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Start Time" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Name="tbstm" Grid.Column="1" Margin="5"></TextBox>
+            </Grid>
+            <Grid Grid.Row="2" Background="WhiteSmoke">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Water Volume" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="1" Margin="5" Text="{Binding _FilterBrew.WaterVolume}"></TextBox>
+                <TextBlock Name="tbpkg1" Grid.Column="2" Text="Grinder1 Powder" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="3" Margin="5" Text="{Binding _FilterBrew.Grind1Cnt}"></TextBox>
+            </Grid>
+            <Grid Grid.Row="3" Background="Gray">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="UpPostion" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="1" Margin="5" Text="{Binding _FilterBrew.ActionUpPostion}"></TextBox>
+                <TextBlock Name="tbpkg2" Grid.Column="2" Text="Grinder2 Powder" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="3" Margin="5" Text="{Binding _FilterBrew.Grind2Cnt}"></TextBox>
+            </Grid>
+            <Grid Grid.Row="4" Background="WhiteSmoke">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="DownPostion" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="1" Margin="5" Text="{Binding _FilterBrew.ActionDownPostion}"></TextBox>
+                <TextBlock Grid.Column="2" Text="PreBrewTime" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="3" Margin="5" Text="{Binding _FilterBrew.Tm_Pre}"></TextBox>
+            </Grid>
+            <Grid Grid.Row="5" Background="Gray">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="ExtractionTime" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="1" Margin="5" Text="{Binding _FilterBrew.Tm_Press}"></TextBox>
+                <TextBlock Grid.Column="2" Text="DecompressTime" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="3" Margin="5" Text="{Binding _FilterBrew.Tm_Depress}"></TextBox>
+            </Grid>
+            <Grid Grid.Row="6" Background="WhiteSmoke">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="OpenDelayTime" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="1" Margin="5" Text="{Binding _FilterBrew.Tm_DelayOpen}"></TextBox>
+            </Grid>
+            <Grid Grid.Row="7" Background="Silver">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Margin="20,5" Grid.Column="0" Content="Save to this Ingredient" Click="Button_Click"></Button>
+                    <Button Margin="20,5" Grid.Column="1" Content="Save to New Ingredient" Click="Button_Click_1"></Button>
+                </Grid>
+                </Grid>
+        </Grid>
+    </Viewbox>
+</Window>

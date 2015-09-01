@@ -1,0 +1,29 @@
+﻿public class Ingredient_Espresso_extern:NotificationObject
+    {
+        public Ingredient_Espresso_extern() { }
+        private UInt16 _WaterVolume;
+        [XmlAttribute("WaterVolume")]
+        public UInt16 WaterVolume
+        {
+            get { return _WaterVolume; }
+            set { if (value != _WaterVolume) { _WaterVolume = value; this.RaisePropertyChanged("WaterVolume"); } }
+        } //0-300ml  水量
+        private UInt16 _Grind1Cnt;
+        [XmlAttribute("Grind1Cnt")]
+        public UInt16 Grind1Cnt { get; set; }   //0-50g 磨豆机1粉量
+        private UInt16 _Grind2Cnt;
+        [XmlAttribute("Grind2Cnt")]
+        public UInt16 Grind2Cnt { get; set; }   //0-50g 磨豆机2粉量 
+        private UInt16 _Tm_Infusio;
+        [XmlAttribute("Tm_Infusion")]
+        public UInt16 Tm_Infusio { get; set; }  //浸泡水量
+        private UInt16 _Tm_Pause;
+        [XmlAttribute("Tm_Pause")]
+        public UInt16 Tm_Pause { get; set; }    //浸泡等待时间
+        private UInt16 _Tm_Press;
+        [XmlAttribute("Tm_Press")]
+        public UInt16 Tm_Press { get; set; }    //压力时间 
+        private UInt16 _Tm_DelayOpen;
+        [XmlAttribute("Tm_DelayOpen")]
+        public UInt16 Tm_DelayOpen { get; set; }//出饮料时间
+    } 

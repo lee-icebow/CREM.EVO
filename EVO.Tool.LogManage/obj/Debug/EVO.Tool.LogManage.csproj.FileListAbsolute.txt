@@ -1,0 +1,13 @@
+D:\myproject\project\EVO-Platform\CREM.EVO\EVO.Tool.LogManage\bin\Debug\EVO.Tool.LogManage.exe.config
+D:\myproject\project\EVO-Platform\CREM.EVO\EVO.Tool.LogManage\obj\Debug\EVO.Tool.LogManage.csprojResolveAssemblyReference.cache
+D:\myproject\project\EVO-Platform\CREM.EVO\EVO.Tool.LogManage\obj\Debug\MainWindow.baml
+D:\myproject\project\EVO-Platform\CREM.EVO\EVO.Tool.LogManage\obj\Debug\MainWindow.g.cs
+D:\myproject\project\EVO-Platform\CREM.EVO\EVO.Tool.LogManage\obj\Debug\App.g.cs
+D:\myproject\project\EVO-Platform\CREM.EVO\EVO.Tool.LogManage\obj\Debug\EVO.Tool.LogManage_MarkupCompile.cache
+D:\myproject\project\EVO-Platform\CREM.EVO\EVO.Tool.LogManage\obj\Debug\EVO.Tool.LogManage.g.resources
+D:\myproject\project\EVO-Platform\CREM.EVO\EVO.Tool.LogManage\obj\Debug\EVO.Tool.LogManage.Properties.Resources.resources
+D:\myproject\project\EVO-Platform\CREM.EVO\EVO.Tool.LogManage\obj\Debug\EVO.Tool.LogManage.csproj.GenerateResource.Cache
+D:\myproject\project\EVO-Platform\CREM.EVO\EVO.Tool.LogManage\bin\Debug\EVO.Tool.LogManage.exe
+D:\myproject\project\EVO-Platform\CREM.EVO\EVO.Tool.LogManage\bin\Debug\EVO.Tool.LogManage.pdb
+D:\myproject\project\EVO-Platform\CREM.EVO\EVO.Tool.LogManage\obj\Debug\EVO.Tool.LogManage.exe
+D:\myproject\project\EVO-Platform\CREM.EVO\EVO.Tool.LogManage\obj\Debug\EVO.Tool.LogManage.pdb

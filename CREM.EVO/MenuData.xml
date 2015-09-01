@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MenuData xmlns="">
+  <Operation  Name="Select Machine" Gesture="F">
+    <Operation Name="EVO-01" Gesture="N"></Operation>
+    <Operation Name="EVO-02" Gesture="N"></Operation>
+    <Operation Name="EVO-03" Gesture="N"></Operation>
+
+  </Operation>  
+</MenuData>

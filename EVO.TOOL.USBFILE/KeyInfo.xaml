@@ -1,0 +1,25 @@
+﻿<Window x:Class="EVO.TOOL.USBFILE.KeyInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="KeyInfo" Height="300" Width="400" WindowStyle="None">
+    <Viewbox Stretch="Fill">
+        <Grid Height="295" Width="800">
+            <Canvas>
+                <TextBlock FontSize="36" Text="USB-Key Info" Canvas.Left="271" Canvas.Top="-5"/>
+                <TextBlock FontSize="36" Text="PID" Canvas.Left="17" Canvas.Top="44"></TextBlock>
+                <TextBox Name="tbPID" FontSize="36" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" Text="" Canvas.Left="89" Canvas.Top="44" IsEnabled="False" MinWidth="200" Width="200"></TextBox>
+                <TextBlock FontSize="36" Text="VID" Canvas.Left="17" Canvas.Top="111" RenderTransformOrigin="0.617,-0.279"/>
+                <TextBox Name="tbVID" FontSize="36" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" Text="" Canvas.Left="89" Canvas.Top="111" IsEnabled="False" MinWidth="200" RenderTransformOrigin="0.391,0.472"/>
+                <TextBlock FontSize="36" Text="SN" Canvas.Left="17" Canvas.Top="183"/>
+                <TextBox Name="tbSN" FontSize="36" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" Text="" Canvas.Left="89" Canvas.Top="183" IsEnabled="False" MinWidth="200"/>
+                <TextBlock FontSize="36" Text="Copyright" Canvas.Left="311" Canvas.Top="44"/>
+                <TextBox IsEnabled="False" Name="tbCpr" FontSize="36" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" Text="Crem" Canvas.Left="483" Canvas.Top="38"  MinWidth="300" MaxLength="10"/>
+                <TextBlock FontSize="36" Text="User Level" Canvas.Left="311" Canvas.Top="183"/>
+                <TextBlock FontSize="36" Text="User    ID" Canvas.Left="311" Canvas.Top="111"/>
+                <TextBox IsEnabled="False" x:Name="tbId" FontSize="36" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" Text="111111" Canvas.Left="483" Canvas.Top="111"  MinWidth="300" MaxLength="6"/>
+                <TextBox IsEnabled="False" Name="cbkeylv" FontSize="36" MinWidth="300"  Canvas.Left="483" Canvas.Top="183" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">123</TextBox>
+                <Button MinWidth="200" FontSize="24" Canvas.Left="279" Canvas.Top="247" Click="Button_Click">Close</Button>
+            </Canvas>
+        </Grid>
+    </Viewbox>
+</Window>

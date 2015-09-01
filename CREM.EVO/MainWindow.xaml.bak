@@ -1,0 +1,1781 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xx="clr-namespace:CREM.EVO"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="CREM.EVO.MainWindow"
+       xmlns:xxx="clr-namespace:CREM.EVO.Utility;assembly=CREM.EVO.Utility"
+     
+    Title="EVO.PLATFORM" Height="600" Width="800">
+    <Window.Resources>
+        <xxx:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"></xxx:BoolToVisibilityConverter>
+        <xxx:IngredientTypeToVisibilityConverter x:Key="IngredientTypeToVisibilityConverter"></xxx:IngredientTypeToVisibilityConverter>
+        <xxx:IntToIsChecked x:Key="IntToIsChecked"></xxx:IntToIsChecked>
+        <xxx:IntToselectIndex x:Key="IntToselectIndex"></xxx:IntToselectIndex>
+        <xxx:IntToPicScr x:Key="IntToPicScr"></xxx:IntToPicScr>
+    </Window.Resources>
+    <Viewbox Stretch="Fill" d:IsHidden="True" >
+        <Grid Height="900" Width="1200" d:IsHidden="True">
+            <Grid x:Name="Evo_Grd_MainSelect" Visibility="{Binding _UiData.is_mainselect_visible, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter},ConverterParameter=Disabled}" d:IsHidden="True">
+                <Grid Margin="200,0" d:IsHidden="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Button Command="{Binding BtnCmd}" CommandParameter="257" Style="{StaticResource MyButton}" Grid.Row="0" Margin="100,10" Content="Machine Setting" FontSize="36" d:IsHidden="True"/>
+                    <Button Command="{Binding BtnCmd}" CommandParameter="258" Style="{StaticResource MyButton}" Grid.Row="1" Margin="100,10" Content="Machine Test" FontSize="36" d:IsHidden="True"/>
+                    <Button Command="{Binding BtnCmd}" CommandParameter="259" Style="{StaticResource MyButton}" Grid.Row="2" Margin="100,10" Content="Recipe Setting System" FontSize="36" d:IsHidden="True"/>
+                    <Button Command="{Binding BtnCmd}" CommandParameter="260" Style="{StaticResource MyButton}" Grid.Row="3" Margin="100,10" Content="Clean Setting System" FontSize="36" d:IsHidden="True"/>
+                    <Button Command="{Binding BtnCmd}" CommandParameter="261" Style="{StaticResource MyButton}" Grid.Row="4" Margin="100,10" Content="DB System" FontSize="36" d:IsHidden="True"/>
+                    <Button Command="{Binding ComCmd}" CommandParameter="513" Style="{StaticResource MyButton}" Grid.Row="6" Margin="100,10" Content="Communication Setting" FontSize="36" d:IsHidden="True"/>
+                    <Button Command="{Binding BtnCmd}" CommandParameter="512" Style="{StaticResource MyButton}" Grid.Row="7" Margin="100,10" Content="Assist Tools" FontSize="36" d:IsHidden="True"/>
+                    <Button Command="{Binding BtnCmd}" CommandParameter="263" Style="{StaticResource MyButton}" Grid.Row="5" Margin="100,10" Content="Machine Update" FontSize="36" d:IsHidden="True"/>
+
+                </Grid>
+            </Grid>
+            <Grid x:Name="Evo_Grd_MachineSet" Visibility="{Binding _UiData.is_machineset_visible, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter},ConverterParameter=Disabled}" d:IsHidden="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="3" d:IsHidden="True"/>
+                <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="3" d:IsHidden="True"/>
+                <Grid Grid.Column="0" d:IsHidden="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" d:IsHidden="True">
+                        <Border Grid.Row="0" BorderBrush="Gray" BorderThickness="3" d:IsHidden="True"></Border>
+                        <TextBlock Text="Select" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32" d:IsHidden="True"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="2" d:IsHidden="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="4" Grid.ColumnSpan="2" Margin="20" d:IsHidden="True">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Button Command="{Binding BtnCmd}" CommandParameter="1" Style="{StaticResource ButtonStyle}" Grid.Row="0" Margin="20,5" Content="Save" FontSize="36" d:IsHidden="True"></Button>
+                            <Button Command="{Binding BtnCmd}" CommandParameter="2" Style="{StaticResource ButtonStyle}" Grid.Row="2" Margin="20,5" Content="Back" FontSize="36" d:IsHidden="True"></Button>
+
+                        </Grid>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="Valve" Margin="0,16" d:IsHidden="True"></TextBlock>
+                        <TextBlock  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Text="{Binding _CrtEVOMachine.ValveAmt}" d:IsHidden="True" ></TextBlock>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="Mixser" Margin="0,16" d:IsHidden="True"></TextBlock>
+                        <TextBlock  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Text="{Binding _CrtEVOMachine.MixerAmt}" d:IsHidden="True" ></TextBlock>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="Canister" Margin="0,16" d:IsHidden="True"></TextBlock>
+                        <TextBlock  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Text="{Binding _CrtEVOMachine.CanisterAmt}" d:IsHidden="True" ></TextBlock>
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="BeanHopper" Margin="0,16" d:IsHidden="True"></TextBlock>
+                        <TextBlock  Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Text="{Binding _CrtEVOMachine.BeanHopperAmt}" d:IsHidden="True" ></TextBlock>
+
+
+                    </Grid>
+                    <Grid Grid.Row="1" d:IsHidden="True">
+                        <ListView ItemsSource="{Binding _LstEVOMachine}" Tag="Main" SelectionChanged="ListView_SelectionChanged" d:IsHidden="True">
+                            <ListView.Template>
+                                <ControlTemplate>
+                                    <Border CornerRadius="10" BorderBrush="RoyalBlue" BorderThickness="5">
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" >
+                                            <ItemsPresenter />
+                                        </ScrollViewer>
+                                    </Border>
+                                </ControlTemplate>
+                            </ListView.Template>
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel IsItemsHost="True"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListViewItem}">
+                                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                <Border Name="BD_Collector" CornerRadius="3" Background="DarkSeaGreen" Width="auto" Height="auto" Margin="5">
+                                                    <Label Content="{Binding Path=Name}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="36" />
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="BD_Collector" Property="Background" Value="YellowGreen" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter TargetName="BD_Collector" Property="Background" Value="DarkGreen" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1" d:IsHidden="True">
+                    <TabControl d:IsHidden="True">
+                        <TabItem Header="WaterValve" FontSize="36" d:IsHidden="True">
+                            <Grid d:IsHidden="True">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <ListView Grid.Row="0" ItemsSource="{Binding _CrtEVOMachine._WaterValve}" Tag="Valve" SelectionChanged="ListView_SelectionChanged" d:IsHidden="True">
+                                    <ListView.Template>
+                                        <ControlTemplate>
+                                            <Border  BorderBrush="RoyalBlue" BorderThickness="5">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="1*"/>
+                                                        <RowDefinition Height="6*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid Grid.Row="0">
+                                                        <Grid.Background>
+                                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                <GradientStop Color="#FFFFF8FB" Offset="0"/>
+                                                                <GradientStop Color="#FF136EF1" Offset="0.621"/>
+                                                            </LinearGradientBrush>
+                                                        </Grid.Background>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Grid.Column="0" Text="DeviceID"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                        <TextBlock Grid.Column="1" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                        <TextBlock Grid.Column="2" Text="IoAdress"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                        <TextBlock Grid.Column="3" Text="Flow"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                    </Grid>
+                                                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.RowSpan="2" >
+                                                        <ItemsPresenter />
+                                                    </ScrollViewer>
+                                                </Grid>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </ListView.Template>
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel IsItemsHost="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="{x:Type ListViewItem}">
+                                            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                        <Border  CornerRadius="3" BorderThickness="3" Background="DarkSeaGreen" Width="auto" Height="auto" Margin="5">
+                                                            <Grid Name="BD_Collector" Grid.Row="0">
+                                                                <Grid.Background>
+                                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                        <GradientStop Color="#FFFFF8FB" Offset="0"/>
+                                                                        <GradientStop Color="#FF0DF517" Offset="0.621"/>
+                                                                    </LinearGradientBrush>
+                                                                </Grid.Background>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <TextBlock Grid.Column="0" Text="{Binding Path=DeviceID}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                                <TextBlock Grid.Column="1" Text="{Binding Path=Name}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                                <TextBlock Grid.Column="2" Text="{Binding Path=DeviceIoAdress}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                                <TextBlock Grid.Column="3" Text="{Binding Path=Flow}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                            </Grid>
+
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="BD_Collector" Property="Background" Value="YellowGreen" />
+                                                            </Trigger>
+                                                            <Trigger Property="IsSelected" Value="True">
+                                                                <Setter TargetName="BD_Collector" Property="Background" Value="DarkGreen" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                </ListView>
+                                <Grid Grid.Row="1" d:IsHidden="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="5" d:IsHidden="True">
+                                        <Grid Background="WhiteSmoke" d:IsHidden="True" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Button Command="{Binding BtnCmd}" CommandParameter="16" Style="{StaticResource ButtonStyle}" Grid.Row="0" Content="Add" Margin="10,35" d:IsHidden="True"></Button>
+                                            <Button Command="{Binding BtnCmd}" CommandParameter="17" Style="{StaticResource ButtonStyle}" Grid.Row="1" Content="Del" Margin="10,35" d:IsHidden="True"></Button>
+                                            <Button Command="{Binding BtnCmd}" CommandParameter="18" Style="{StaticResource ButtonStyle}" Grid.Row="2" Content="Save" Margin="10,35" d:IsHidden="True"></Button>
+                                        </Grid>
+                                    </Border>
+                                    <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="5" d:IsHidden="True">
+                                        <Grid d:IsHidden="True">
+                                            <TextBlock  Text="Name:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,10,0,350" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtWaterValve.Name, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,10,0,344" FontSize="24" d:IsHidden="True"></TextBox>
+                                            <TextBlock  Text="IoAdress:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,83,0,277" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtWaterValve.DeviceIoAdress, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,83,0,271" FontSize="24" d:IsHidden="True"></TextBox>
+                                            <TextBlock  Text="Flow:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,161,0,199" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtWaterValve.Flow, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,161,0,193" FontSize="24" d:IsHidden="True"></TextBox>
+                                            <TextBlock  Text="DeviceID:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,246,0,114" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtWaterValve.DeviceID, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,246,0,124" FontSize="24" d:IsHidden="True"></TextBox>
+
+
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Canister" FontSize="36" d:IsHidden="True">
+                            <Grid d:IsHidden="True">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <ListView Grid.Row="0" ItemsSource="{Binding _CrtEVOMachine._CanisterUnit}" Tag="Canister" SelectionChanged="ListView_SelectionChanged" d:IsHidden="True">
+                                    <ListView.Template>
+                                        <ControlTemplate>
+                                            <Border  BorderBrush="RoyalBlue" BorderThickness="5">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="1*"/>
+                                                        <RowDefinition Height="6*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid Grid.Row="0">
+                                                        <Grid.Background>
+                                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                <GradientStop Color="#FFFFF8FB" Offset="0"/>
+                                                                <GradientStop Color="#FF136EF1" Offset="0.621"/>
+                                                            </LinearGradientBrush>
+                                                        </Grid.Background>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Grid.Column="0" Text="DeviceID"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                        <TextBlock Grid.Column="1" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                        <TextBlock Grid.Column="2" Text="IoAdress"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                        <TextBlock Grid.Column="3" Text="Flow"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                    </Grid>
+                                                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.RowSpan="2" >
+                                                        <ItemsPresenter />
+                                                    </ScrollViewer>
+                                                </Grid>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </ListView.Template>
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel IsItemsHost="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="{x:Type ListViewItem}">
+                                            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                        <Border  CornerRadius="3" BorderThickness="3" Background="DarkSeaGreen" Width="auto" Height="auto" Margin="5">
+                                                            <Grid Name="BD_Collector" Grid.Row="0">
+                                                                <Grid.Background>
+                                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                        <GradientStop Color="#FFFFF8FB" Offset="0"/>
+                                                                        <GradientStop Color="#FF0DF517" Offset="0.621"/>
+                                                                    </LinearGradientBrush>
+                                                                </Grid.Background>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <TextBlock Grid.Column="0" Text="{Binding Path=DeviceID}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                                <TextBlock Grid.Column="1" Text="{Binding Path=Name}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                                <TextBlock Grid.Column="2" Text="{Binding Path=DeviceIoAdress}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                                <TextBlock Grid.Column="3" Text="{Binding Path=Flow}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                            </Grid>
+
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="BD_Collector" Property="Background" Value="YellowGreen" />
+                                                            </Trigger>
+                                                            <Trigger Property="IsSelected" Value="True">
+                                                                <Setter TargetName="BD_Collector" Property="Background" Value="DarkGreen" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                </ListView>
+                                <Grid Grid.Row="1" d:IsHidden="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="5" d:IsHidden="True">
+                                        <Grid Background="WhiteSmoke" d:IsHidden="True" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Button Command="{Binding BtnCmd}" CommandParameter="32" Style="{StaticResource ButtonStyle}" Grid.Row="0" Content="Add" Margin="10,35" d:IsHidden="True"></Button>
+                                            <Button Command="{Binding BtnCmd}" CommandParameter="33" Style="{StaticResource ButtonStyle}" Grid.Row="1" Content="Del" Margin="10,35" d:IsHidden="True"></Button>
+                                            <Button Command="{Binding BtnCmd}" CommandParameter="34" Style="{StaticResource ButtonStyle}" Grid.Row="2" Content="Save" Margin="10,35" d:IsHidden="True"></Button>
+                                        </Grid>
+                                    </Border>
+                                    <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="5" d:IsHidden="True">
+                                        <Grid d:IsHidden="True">
+                                            <TextBlock  Text="Name:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,10,0,350" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtCanisterUnit.Name, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,10,0,344" FontSize="24" d:IsHidden="True"></TextBox>
+                                            <TextBlock  Text="IoAdress:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,83,0,277" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtCanisterUnit.DeviceIoAdress, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,83,0,271" FontSize="24" d:IsHidden="True"></TextBox>
+                                            <TextBlock  Text="Flow:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,161,0,199" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtCanisterUnit.Flow, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,161,0,193" FontSize="24" d:IsHidden="True"></TextBox>
+                                            <TextBlock  Text="DeviceID:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,246,0,114" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtCanisterUnit.DeviceID, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,246,0,124" FontSize="24" d:IsHidden="True"></TextBox>
+
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Mixser" FontSize="36" d:IsHidden="True" >
+                            <Grid d:IsHidden="True">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <ListView Grid.Row="0" ItemsSource="{Binding _CrtEVOMachine._MixerUnit}" Tag="Mixser" SelectionChanged="ListView_SelectionChanged" d:IsHidden="True">
+                                    <ListView.Template>
+                                        <ControlTemplate>
+                                            <Border  BorderBrush="RoyalBlue" BorderThickness="5">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="1*"/>
+                                                        <RowDefinition Height="6*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid Grid.Row="0">
+                                                        <Grid.Background>
+                                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                <GradientStop Color="#FFFFF8FB" Offset="0"/>
+                                                                <GradientStop Color="#FF136EF1" Offset="0.621"/>
+                                                            </LinearGradientBrush>
+                                                        </Grid.Background>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Grid.Column="0" Text="DeviceID"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                        <TextBlock Grid.Column="1" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                        <TextBlock Grid.Column="2" Text="IoAdress"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                        <TextBlock Grid.Column="3" Text="Flow"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                    </Grid>
+                                                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.RowSpan="2" >
+                                                        <ItemsPresenter />
+                                                    </ScrollViewer>
+                                                </Grid>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </ListView.Template>
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel IsItemsHost="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="{x:Type ListViewItem}">
+                                            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                        <Border  CornerRadius="3" BorderThickness="3" Background="DarkSeaGreen" Width="auto" Height="auto" Margin="5">
+                                                            <Grid Name="BD_Collector" Grid.Row="0">
+                                                                <Grid.Background>
+                                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                        <GradientStop Color="#FFFFF8FB" Offset="0"/>
+                                                                        <GradientStop Color="#FF0DF517" Offset="0.621"/>
+                                                                    </LinearGradientBrush>
+                                                                </Grid.Background>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <TextBlock Grid.Column="0" Text="{Binding Path=DeviceID}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                                <TextBlock Grid.Column="1" Text="{Binding Path=Name}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                                <TextBlock Grid.Column="2" Text="{Binding Path=DeviceIoAdress}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                                <TextBlock Grid.Column="3" Text="{Binding Path=Flow}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                            </Grid>
+
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="BD_Collector" Property="Background" Value="YellowGreen" />
+                                                            </Trigger>
+                                                            <Trigger Property="IsSelected" Value="True">
+                                                                <Setter TargetName="BD_Collector" Property="Background" Value="DarkGreen" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                </ListView>
+                                <Grid Grid.Row="1" d:IsHidden="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="5" d:IsHidden="True">
+                                        <Grid Background="WhiteSmoke" d:IsHidden="True" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Button Command="{Binding BtnCmd}" CommandParameter="48" Style="{StaticResource ButtonStyle}" Grid.Row="0" Content="Add" Margin="10,35" d:IsHidden="True"></Button>
+                                            <Button Command="{Binding BtnCmd}" CommandParameter="49" Style="{StaticResource ButtonStyle}" Grid.Row="1" Content="Del" Margin="10,35" d:IsHidden="True"></Button>
+                                            <Button Command="{Binding BtnCmd}" CommandParameter="50" Style="{StaticResource ButtonStyle}" Grid.Row="2" Content="Save" Margin="10,35" d:IsHidden="True"></Button>
+                                        </Grid>
+                                    </Border>
+                                    <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="5" d:IsHidden="True">
+                                        <Grid d:IsHidden="True">
+                                            <TextBlock  Text="Name:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,10,0,350" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtMixerUnit.Name, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,10,0,344" FontSize="24" d:IsHidden="True"></TextBox>
+                                            <TextBlock  Text="IoAdress:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,83,0,277" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtMixerUnit.DeviceIoAdress, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,83,0,271" FontSize="24" d:IsHidden="True"></TextBox>
+                                            <TextBlock  Text="Speed:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,161,0,199" d:IsHidden="True"></TextBlock>
+
+                                            <TextBox  Text="{Binding _CrtMixerUnit.Speed, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,161,0,193" FontSize="24" d:IsHidden="True"></TextBox>
+                                            <TextBlock  Text="DeviceID:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,246,0,114" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtMixerUnit.DeviceID, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,246,0,124" FontSize="24" d:IsHidden="True"></TextBox>
+
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="BeanHopper" FontSize="36" d:IsHidden="True" >
+                            <Grid d:IsHidden="True">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <ListView Grid.Row="0" ItemsSource="{Binding _CrtEVOMachine._BeanHopperUint}" Tag="BeanHopper" SelectionChanged="ListView_SelectionChanged" d:IsHidden="True">
+                                    <ListView.Template>
+                                        <ControlTemplate>
+                                            <Border  BorderBrush="RoyalBlue" BorderThickness="5">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="1*"/>
+                                                        <RowDefinition Height="6*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid Grid.Row="0">
+                                                        <Grid.Background>
+                                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                <GradientStop Color="#FFFFF8FB" Offset="0"/>
+                                                                <GradientStop Color="#FF136EF1" Offset="0.621"/>
+                                                            </LinearGradientBrush>
+                                                        </Grid.Background>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="1*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Grid.Column="0" Text="DeviceID"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                        <TextBlock Grid.Column="1" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                        <TextBlock Grid.Column="2" Text="IoAdress"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                        <TextBlock Grid.Column="3" Text="Flow"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                    </Grid>
+                                                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.RowSpan="2" >
+                                                        <ItemsPresenter />
+                                                    </ScrollViewer>
+                                                </Grid>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </ListView.Template>
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel IsItemsHost="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="{x:Type ListViewItem}">
+                                            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                        <Border  CornerRadius="3" BorderThickness="3" Background="DarkSeaGreen" Width="auto" Height="auto" Margin="5">
+                                                            <Grid Name="BD_Collector" Grid.Row="0">
+                                                                <Grid.Background>
+                                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                        <GradientStop Color="#FFFFF8FB" Offset="0"/>
+                                                                        <GradientStop Color="#FF0DF517" Offset="0.621"/>
+                                                                    </LinearGradientBrush>
+                                                                </Grid.Background>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <TextBlock Grid.Column="0" Text="{Binding Path=DeviceID}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                                <TextBlock Grid.Column="1" Text="{Binding Path=Name}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                                <TextBlock Grid.Column="2" Text="{Binding Path=DeviceIoAdress}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                                <TextBlock Grid.Column="3" Text="{Binding Path=Flow}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" />
+                                                            </Grid>
+
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="BD_Collector" Property="Background" Value="YellowGreen" />
+                                                            </Trigger>
+                                                            <Trigger Property="IsSelected" Value="True">
+                                                                <Setter TargetName="BD_Collector" Property="Background" Value="DarkGreen" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                </ListView>
+                                <Grid Grid.Row="1" d:IsHidden="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="5" d:IsHidden="True">
+                                        <Grid Background="WhiteSmoke" d:IsHidden="True" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Button Command="{Binding BtnCmd}" CommandParameter="64" Style="{StaticResource ButtonStyle}" Grid.Row="0" Content="Add" Margin="10,35" d:IsHidden="True"></Button>
+                                            <Button Command="{Binding BtnCmd}" CommandParameter="65" Style="{StaticResource ButtonStyle}" Grid.Row="1" Content="Del" Margin="10,35" d:IsHidden="True"></Button>
+                                            <Button Command="{Binding BtnCmd}" CommandParameter="66" Style="{StaticResource ButtonStyle}" Grid.Row="2" Content="Save" Margin="10,35" d:IsHidden="True"></Button>
+                                        </Grid>
+                                    </Border>
+                                    <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="5" d:IsHidden="True">
+                                        <Grid d:IsHidden="True">
+                                            <TextBlock  Text="Name:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,10,0,350" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtBeanHopperUint.Name, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,10,0,344" FontSize="24" d:IsHidden="True"></TextBox>
+                                            <TextBlock  Text="IoAdress:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,83,0,277" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtBeanHopperUint.DeviceIoAdress, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,83,0,271" FontSize="24" d:IsHidden="True"></TextBox>
+                                            <TextBlock  Text="Flow:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,161,0,199" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtBeanHopperUint.Flow, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,161,0,193" FontSize="24" d:IsHidden="True"></TextBox>
+                                            <TextBlock  Text="DeviceID:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,246,0,114" d:IsHidden="True"></TextBlock>
+                                            <TextBox  Text="{Binding _CrtBeanHopperUint.DeviceID, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="225" Margin="183,246,0,124" FontSize="24" d:IsHidden="True"></TextBox>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+
+                </Grid>
+            </Grid>
+            <Grid x:Name="Evo_Grd_MachineTest" Visibility="{Binding _UiData.is_machinetest_visible, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter},ConverterParameter=Disabled}" d:IsHidden="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" d:IsHidden="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="2*"/>
+
+                    </Grid.RowDefinitions>
+                    <Border BorderBrush="Gray" BorderThickness="3" d:IsHidden="True"></Border>
+                    <TextBlock Text="Device List" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="56" d:IsHidden="True" ></TextBlock>
+                    <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="3" d:IsHidden="True">
+                        <ListView ItemsSource="{Binding _LstDeviceUnit}" Tag="DEVTEST" SelectionChanged="ListView_SelectionChanged" d:IsHidden="True">
+                            <ListView.Template>
+                                <ControlTemplate>
+                                    <Border CornerRadius="10" BorderBrush="RoyalBlue" BorderThickness="5">
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" >
+                                            <ItemsPresenter />
+                                        </ScrollViewer>
+                                    </Border>
+                                </ControlTemplate>
+                            </ListView.Template>
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel IsItemsHost="True"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListViewItem}">
+                                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                <Border Name="BD_Collector" CornerRadius="3" Background="DarkSeaGreen" Width="auto" Height="auto" Margin="5">
+                                                    <Label Content="{Binding Path=Name}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="36" />
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="BD_Collector" Property="Background" Value="YellowGreen" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter TargetName="BD_Collector" Property="Background" Value="DarkGreen" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </Border>
+                    <StackPanel Grid.Row="2" d:IsHidden="True">
+                        <Button Command="{Binding BtnCmd}" CommandParameter="262" Style="{StaticResource ButtonStyle}"  Margin="20,25" Content="Status" FontSize="36" d:IsHidden="True"></Button>
+                        <Button Command="{Binding BtnCmd}" CommandParameter="2" Style="{StaticResource ButtonStyle}"  Margin="20,5" Content="Back" FontSize="36" d:IsHidden="True"></Button>
+                    </StackPanel>
+
+                </Grid>
+                <Grid Grid.Column="1" d:IsHidden="True" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" d:IsHidden="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="9*"/>
+                        </Grid.RowDefinitions>
+                        <Border BorderBrush="Gray" BorderThickness="3" d:IsHidden="True">
+                            <TextBlock Text="Device Information" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontSize="48" d:IsHidden="True"></TextBlock>
+                        </Border>
+                        <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="3" d:IsHidden="True">
+                            <Grid d:IsHidden="True">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="3*"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding _CrtDeviceUnit.BkPicSorIn}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,30" d:IsHidden="True"></Image>
+                                <Canvas Grid.Row="1" d:IsHidden="True">
+                                    <TextBlock FontSize="32" Canvas.Left="52" Canvas.Top="50" d:IsHidden="True">Device Name</TextBlock>
+                                    <TextBlock FontSize="32" Canvas.Left="52" Canvas.Top="150" d:IsHidden="True">Device Type</TextBlock>
+                                    <TextBlock FontSize="32" Canvas.Left="52" Canvas.Top="250" d:IsHidden="True">Device ID</TextBlock>
+                                    <TextBlock FontSize="32" Canvas.Left="52" Canvas.Top="350" d:IsHidden="True">Device Adress</TextBlock>
+
+                                    <TextBlock MaxWidth="280" TextWrapping="Wrap" FontSize="32" Canvas.Left="300" Canvas.Top="50"  Text="{Binding _CrtDeviceUnit.Name}" d:IsHidden="True"></TextBlock>
+                                    <TextBlock MaxWidth="280" TextWrapping="Wrap" FontSize="32" Canvas.Left="300" Canvas.Top="150" Text="" d:IsHidden="True"></TextBlock>
+                                    <TextBlock MaxWidth="280" TextWrapping="Wrap" FontSize="32" Canvas.Left="300" Canvas.Top="250" Text="{Binding _CrtDeviceUnit.DeviceID}" d:IsHidden="True"></TextBlock>
+                                    <TextBlock MaxWidth="280" TextWrapping="Wrap" FontSize="32" Canvas.Left="300" Canvas.Top="350" Text="{Binding _CrtDeviceUnit.DeviceIoAdress}" d:IsHidden="True"></TextBlock>
+                                </Canvas>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="3" d:IsHidden="True">
+                        <StackPanel VerticalAlignment="Center" d:IsHidden="True">
+                            <Button Margin="0,20" Command="{Binding ComCmd}" CommandParameter="1" Style="{StaticResource MyButton}" Height="60" FontSize="32" d:IsHidden="True">Start Test</Button>
+                            <Button Margin="0,20" Command="{Binding ComCmd}" CommandParameter="2" Style="{StaticResource MyButton}" Height="60" FontSize="32" d:IsHidden="True">Stop Test</Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Grid>
+            <Grid x:Name="Evo_Grd_RecipeSet" Visibility="{Binding _UiData.is_Recipe_visible, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter},ConverterParameter=Disabled}" d:IsHidden="True" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" d:IsHidden="True">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0FD37A" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="56" Text="Recipe System" d:IsHidden="True"></TextBlock>
+                </Grid>
+                <Border BorderBrush="Gray" BorderThickness="3" d:IsHidden="True" ></Border>
+                <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="3" d:IsHidden="True" ></Border>
+                <Grid Grid.Row="1" d:IsHidden="True" >
+                    <TabControl TabStripPlacement="Right" d:IsHidden="True">
+                        <TabControl.Resources>
+                            <Style TargetType="{x:Type TabItem}">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Padding" Value="0" />
+                                <Setter Property="HeaderTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <Border x:Name="grid"  CornerRadius="0,0,15,0" Background="Silver" >
+                                                <ContentPresenter Content="{TemplateBinding Content}" Margin="4,12,4,4" >
+                                                    <ContentPresenter.LayoutTransform>
+                                                        <RotateTransform Angle="90"/>
+                                                    </ContentPresenter.LayoutTransform>
+                                                </ContentPresenter>
+                                            </Border>
+                                            <DataTemplate.Triggers>
+                                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type TabItem}},Path=IsSelected}" Value="True">
+                                                    <Setter TargetName="grid" Property="Background" >
+                                                        <Setter.Value>
+                                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                <GradientStop Color="#d0e5f7" Offset="0" />
+                                                                <GradientStop Color="#48b0e2" Offset="1" />
+                                                            </LinearGradientBrush>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </DataTrigger>
+                                            </DataTemplate.Triggers>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TabControl.Resources>
+                        <TabItem  Header="Ingredient Setting" FontSize="48" d:IsHidden="True">
+                            <Grid d:IsHidden="True">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="7*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border CornerRadius="10" Grid.Column="2" BorderBrush="Gray" BorderThickness="3" d:IsHidden="True" ></Border>
+                                <Grid Grid.Column="0" d:IsHidden="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="8*"/>
+                                        <RowDefinition Height="4*"/>
+                                    </Grid.RowDefinitions>
+                                    <Border CornerRadius="10" BorderBrush="Gray" BorderThickness="3" d:IsHidden="True" ></Border>
+                                    <Border CornerRadius="10" Grid.Row="2" BorderBrush="Gray" BorderThickness="3" d:IsHidden="True" ></Border>
+
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32" Text="User Ingredient List" d:IsHidden="True"></TextBlock>
+                                    <ListView Grid.Row="1" ItemsSource="{Binding _EvoRecipe._lstIngredientInfo}" Tag="Ingredient" SelectionChanged="ListView_SelectionChanged" Height="497" VerticalAlignment="Top" SelectionMode="Single" d:IsHidden="True">
+                                        <ListView.Template>
+                                            <ControlTemplate>
+                                                <Border CornerRadius="10" BorderBrush="Gray" BorderThickness="3">
+                                                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" >
+                                                        <ItemsPresenter />
+                                                    </ScrollViewer>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </ListView.Template>
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel IsItemsHost="True"/>
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="{x:Type ListViewItem}">
+                                                <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                            <Border Name="BD_Collector" CornerRadius="3" Background="DarkSeaGreen" Width="auto" Height="auto" Margin="5">
+                                                                <Label Content="{Binding Path=Name}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="36" />
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter TargetName="BD_Collector" Property="Background" Value="YellowGreen" />
+                                                                </Trigger>
+                                                                <Trigger Property="IsSelected" Value="True">
+                                                                    <Setter TargetName="BD_Collector" Property="Background" Value="DarkGreen" />
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                    </ListView>
+
+                                    <StackPanel Grid.Row="2" d:IsHidden="True" >
+                                        <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="80" Margin="40,5" FontSize="36"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Add" d:IsHidden="True" ></Button>
+                                        <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="81" Margin="40,5" FontSize="36"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Del" d:IsHidden="True" ></Button>
+                                        <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="82" Margin="40,5" FontSize="36"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Save" d:IsHidden="True" ></Button>
+                                        <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2" Margin="40,5" FontSize="36"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Back" d:IsHidden="True" ></Button>
+
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Column="1" Margin="10,0" Name="grdingredient" IsEnabled="False" d:IsHidden="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="3*"/>
+                                    </Grid.RowDefinitions>
+                                    <Border CornerRadius="10" BorderBrush="Gray" BorderThickness="3" Margin="0,5" d:IsHidden="True">
+
+                                        <Canvas Grid.Row="0" d:IsHidden="True">
+                                            <Canvas.Background>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFBFBABA" Offset="0"/>
+                                                    <GradientStop Color="White" Offset="0.989"/>
+                                                </LinearGradientBrush>
+                                            </Canvas.Background>
+                                            <TextBlock Text="Name:" FontSize="32" Canvas.Left="34" Canvas.Top="47" d:IsHidden="True"></TextBlock>
+                                            <TextBox Text="{Binding _CrtIngredient.Name}" MinWidth="400" FontSize="32" Canvas.Left="216" Canvas.Top="47" d:IsHidden="True"></TextBox>
+                                            <TextBlock Text="ID:" FontSize="32" Canvas.Left="34" Canvas.Top="101" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Text="{Binding _CrtIngredient.ID}" MinWidth="400" FontSize="32" Canvas.Left="216" Canvas.Top="101" d:IsHidden="True"></TextBlock>
+                                        </Canvas>
+                                    </Border>
+                                    <Border CornerRadius="10" Grid.Row="1" BorderBrush="Gray" BorderThickness="3" Margin="0,20" d:IsHidden="True">
+                                        <Grid Name="Espresso" Grid.Row="1" Visibility="{Binding _CrtIngredient.Type , Mode=TwoWay, Converter={StaticResource IngredientTypeToVisibilityConverter},ConverterParameter=ESPRESSO}" d:IsHidden="True">
+                                            <Grid.Background>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFBFBABA" Offset="0"/>
+                                                    <GradientStop Color="White" Offset="0.989"/>
+                                                </LinearGradientBrush>
+                                            </Grid.Background>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="8*"/>
+                                                <ColumnDefinition Width="13*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Margin="12"  Grid.Row="0" Grid.Column="0" Text="Total Time:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="0" Grid.Column="1" Text="{Binding _CrtIngredient._Espresso.UsedTime}" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+
+                                            <TextBlock Margin="12"  Grid.Row="1" Grid.Column="0" Text="WaterVolume:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="2" Grid.Column="0" Text="Grind1Amount:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="3" Grid.Column="0" Text="Grind2Amount:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="4" Grid.Column="0" Text="InfusionTime:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="5" Grid.Column="0" Text="PauseTime:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="6" Grid.Column="0" Text="PressTime:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="7" Grid.Column="0" Text="OpenDelay:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBox Margin="10" Grid.Row="1" Grid.Column="1" Text="{Binding _CrtIngredient._Espresso.WaterVolume, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="2" Grid.Column="1" Text="{Binding _CrtIngredient._Espresso.Grind1Cnt, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="3" Grid.Column="1" Text="{Binding _CrtIngredient._Espresso.Grind2Cnt, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="4" Grid.Column="1" Text="{Binding _CrtIngredient._Espresso.Tm_Infusio, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="5" Grid.Column="1" Text="{Binding _CrtIngredient._Espresso.Tm_Pause, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="6" Grid.Column="1" Text="{Binding _CrtIngredient._Espresso.Tm_Press, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="7" Grid.Column="1" Text="{Binding _CrtIngredient._Espresso.Tm_DelayOpen, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+
+
+                                        </Grid>
+                                    </Border>
+                                    <Border CornerRadius="10" Grid.Row="1" BorderBrush="Gray" BorderThickness="3" Margin="0,20" d:IsHidden="True">
+                                        <Grid Name="FilterBrew" Grid.Row="1" Visibility="{Binding _CrtIngredient.Type , Mode=TwoWay, Converter={StaticResource IngredientTypeToVisibilityConverter},ConverterParameter=FILTERBREW}" d:IsHidden="True">
+                                            <Grid.Background>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFBFBABA" Offset="0"/>
+                                                    <GradientStop Color="White" Offset="0.989"/>
+                                                </LinearGradientBrush>
+                                            </Grid.Background>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="12"  Grid.Row="0" Grid.Column="0" Text="Total Time:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="12,0"  Grid.Row="0" Grid.Column="2" Text="{Binding _CrtIngredient._FilterBrew.UsedTime}" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                            <TextBlock TextWrapping="Wrap" Margin="12,0"  Grid.Row="1" Grid.Column="0" Text="WaterVolume:" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock TextWrapping="Wrap" Margin="12,0"  Grid.Row="2" Grid.Column="0" Text="Grind1Amount(10=1g):" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock TextWrapping="Wrap" Margin="12,0"  Grid.Row="3" Grid.Column="0" Text="Grind2Amount(10=1g):" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock TextWrapping="Wrap" Margin="12,0"  Grid.Row="4" Grid.Column="0" Text="PreBrewTime:" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock TextWrapping="Wrap" Margin="12,0"  Grid.Row="5" Grid.Column="0" Text="Extractiontime:" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock TextWrapping="Wrap" Margin="12,0"  Grid.Row="6" Grid.Column="0" Text="Decompress time:" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock TextWrapping="Wrap" Margin="12,0"  Grid.Row="7" Grid.Column="0" Text="OpenDelay:" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBox Margin="10" Grid.Row="1" Grid.Column="1" Text="{Binding _CrtIngredient._FilterBrew.WaterVolume, Mode=TwoWay}" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="2" Grid.Column="1" Text="{Binding _CrtIngredient._FilterBrew.Grind1Cnt, Mode=TwoWay}" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="3" Grid.Column="1" Text="{Binding _CrtIngredient._FilterBrew.Grind2Cnt, Mode=TwoWay}" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="4" Grid.Column="1" Text="{Binding _CrtIngredient._FilterBrew.Tm_Pre, Mode=TwoWay}" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="5" Grid.Column="1" Text="{Binding _CrtIngredient._FilterBrew.Tm_Press, Mode=TwoWay}" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="6" Grid.Column="1" Text="{Binding _CrtIngredient._FilterBrew.Tm_Depress, Mode=TwoWay}" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="7" Grid.Column="1" Text="{Binding _CrtIngredient._FilterBrew.Tm_DelayOpen, Mode=TwoWay}" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBlock TextWrapping="Wrap" Margin="12,0"  Grid.Row="1" Grid.Column="2" Text="UpPostion  (50~75)" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"/>
+                                            <TextBlock TextWrapping="Wrap" Margin="12,0"  Grid.Row="2" Grid.Column="2" Text="DownPostion  (50~75)" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"/>
+                                            <TextBox Margin="10" Grid.Row="1" Grid.Column="3" Text="{Binding _CrtIngredient._FilterBrew.ActionUpPostion, Mode=TwoWay}" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"/>
+                                            <TextBox Margin="10" Grid.Row="2" Grid.Column="3" Text="{Binding _CrtIngredient._FilterBrew.ActionDownPostion, Mode=TwoWay}" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"/>
+
+                                        </Grid>
+                                    </Border>
+                                    <Border CornerRadius="10" Grid.Row="1" BorderBrush="Gray" BorderThickness="3" Margin="0,20" d:IsHidden="True">
+                                        <Grid Name="InstantPowder" Grid.Row="1" Visibility="{Binding _CrtIngredient.Type , Mode=TwoWay, Converter={StaticResource IngredientTypeToVisibilityConverter},ConverterParameter=INSTANTPOWDER}" d:IsHidden="True">
+                                            <Grid.Background>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFBFBABA" Offset="0"/>
+                                                    <GradientStop Color="White" Offset="0.989"/>
+                                                </LinearGradientBrush>
+                                            </Grid.Background>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="8*"/>
+                                                <ColumnDefinition Width="13*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Margin="12"  Grid.Row="0" Grid.Column="0" Text="Total Time:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="0" Grid.Column="1" Text="{Binding _CrtIngredient._InstantPowder.UsedTime}" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+
+                                            <TextBlock Margin="12"  Grid.Row="1" Grid.Column="0" Text="WhipperSpeed:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="2" Grid.Column="0" Text="WaterVolume:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="3" Grid.Column="0" Text="Canister1Amount:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="4" Grid.Column="0" Text="Canister2Amount:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="5" Grid.Column="0" Text="Canister3Amount:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="6" Grid.Column="0" Text="Canister4Amount:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="7" Grid.Column="0" Text="PreFlush Volume" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="8" Grid.Column="0" Text="AfterFlush Volume" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+
+
+                                            <TextBox Margin="10" Grid.Row="1" Grid.Column="1" Text="{Binding _CrtIngredient._InstantPowder.WhipperSpeed, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="2" Grid.Column="1" Text="{Binding _CrtIngredient._InstantPowder.WaterVolume, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="3" Grid.Column="1" Text="{Binding _CrtIngredient._InstantPowder.Canister1Cnt, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="4" Grid.Column="1" Text="{Binding _CrtIngredient._InstantPowder.Canister2Cnt, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="5" Grid.Column="1" Text="{Binding _CrtIngredient._InstantPowder.Canister3Cnt, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="6" Grid.Column="1" Text="{Binding _CrtIngredient._InstantPowder.Canister3Cnt, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="7" Grid.Column="1" Text="{Binding _CrtIngredient._InstantPowder.PreFlush, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="8" Grid.Column="1" Text="{Binding _CrtIngredient._InstantPowder.AfterFlush, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+
+
+
+                                            <!--<TextBox Margin="10" Grid.Row="1" Grid.Column="1" Text="{Binding _CrtIngredient._InstantPowder.MixIndex, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+                                            <TextBlock Margin="12"  Grid.Row="1" Grid.Column="0" Text="MixIndex:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>-->
+
+                                        </Grid>
+                                    </Border>
+                                    <Border CornerRadius="10" Grid.Row="1" BorderBrush="Gray" BorderThickness="3" Margin="0,20" d:IsHidden="True">
+                                        <Grid Name="FreshMilk" Grid.Row="1" Visibility="{Binding _CrtIngredient.Type , Mode=TwoWay, Converter={StaticResource IngredientTypeToVisibilityConverter},ConverterParameter=FRESHMILK}" d:IsHidden="True">
+                                            <Grid.Background>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFBFBABA" Offset="0"/>
+                                                    <GradientStop Color="White" Offset="0.989"/>
+                                                </LinearGradientBrush>
+                                            </Grid.Background>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="8*"/>
+                                                <ColumnDefinition Width="13*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Margin="12"  Grid.Row="0" Grid.Column="0" Text="Total Time:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="0" Grid.Column="1" Text="{Binding _CrtIngredient._InstantPowder.UsedTime}" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+
+                                            <TextBlock Margin="12"  Grid.Row="1" Grid.Column="0" Text="MilkVolume:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="2" Grid.Column="0" Text="HeaterFlag:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="3" Grid.Column="0" Text="Preflush:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="4" Grid.Column="0" Text="WhipperSpeed:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="5" Grid.Column="0" Text="AfterFlush:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+
+                                            <TextBox Margin="10" Grid.Row="1" Grid.Column="1" Text="{Binding _CrtIngredient._FreshMilk.MilkVolume, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="2" Grid.Column="1" Text="{Binding _CrtIngredient._FreshMilk.HeaterFlag, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="3" Grid.Column="1" Text="{Binding _CrtIngredient._FreshMilk.Preflush, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="4" Grid.Column="1" Text="{Binding _CrtIngredient._FreshMilk.WhipperSpeed, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True" ></TextBox>
+                                            <TextBox Margin="10" Grid.Row="5" Grid.Column="1" Text="{Binding _CrtIngredient._FreshMilk.AfterFlush, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+
+                                        </Grid>
+                                    </Border>
+                                    <Border CornerRadius="10" Grid.Row="1" BorderBrush="Gray" BorderThickness="3" Margin="0,20" d:IsHidden="True">
+                                        <Grid Name="Water" Grid.Row="1" Visibility="{Binding _CrtIngredient.Type , Mode=TwoWay, Converter={StaticResource IngredientTypeToVisibilityConverter},ConverterParameter=WATER}" d:IsHidden="True">
+                                            <Grid.Background>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFBFBABA" Offset="0"/>
+                                                    <GradientStop Color="White" Offset="0.989"/>
+                                                </LinearGradientBrush>
+                                            </Grid.Background>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="8*"/>
+                                                <ColumnDefinition Width="13*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Margin="12"  Grid.Row="0" Grid.Column="0" Text="Total Time:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="0" Grid.Column="1" Text="{Binding _CrtIngredient._InstantPowder.UsedTime}" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+
+                                            <TextBlock Margin="12"  Grid.Row="1" Grid.Column="0" Text="Water Type:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="2" Grid.Column="0" Text="Water Volume:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left" d:IsHidden="True"></TextBlock>
+                                            <!--<TextBlock Margin="12"  Grid.Row="3" Grid.Column="0" Text="Preflush:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="4" Grid.Column="0" Text="WhipperSpeed:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
+                                            <TextBlock Margin="12"  Grid.Row="5" Grid.Column="0" Text="AfterFlush:" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>-->
+
+                                            <ComboBox SelectedIndex="{Binding _CrtIngredient._Water.WaterType, Mode=TwoWay, Converter={StaticResource IntToselectIndex}}" Margin="10" Grid.Row="1" Grid.Column="1"  FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True">
+                                                <ComboBoxItem d:IsHidden="True">Hot Water</ComboBoxItem>
+                                                <ComboBoxItem d:IsHidden="True">Cold Water</ComboBoxItem>
+                                                <ComboBoxItem d:IsHidden="True">Carbon Water</ComboBoxItem>
+                                            </ComboBox>
+                                            <TextBox Margin="10" Grid.Row="2" Grid.Column="1" Text="{Binding _CrtIngredient._Water.WaterVolume, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" d:IsHidden="True"></TextBox>
+                                            <!--<TextBox Margin="10" Grid.Row="3" Grid.Column="1" Text="{Binding _CrtIngredient._FreshMilk.Preflush, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+                                            <TextBox Margin="10" Grid.Row="4" Grid.Column="1" Text="{Binding _CrtIngredient._FreshMilk.WhipperSpeed, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            <TextBox Margin="10" Grid.Row="5" Grid.Column="1" Text="{Binding _CrtIngredient._FreshMilk.AfterFlush, Mode=TwoWay}" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>-->
+
+                                        </Grid>
+                                    </Border>
+
+                                </Grid>
+                                <Grid Grid.Column="2" Name="grdcmd" IsEnabled="False" d:IsHidden="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="14*"/>
+                                        <RowDefinition Height="87*"/>
+                                    </Grid.RowDefinitions>
+                                    <Border BorderBrush="Gray" BorderThickness="3" d:IsHidden="True"></Border>
+                                    <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True">Machine CMD</TextBlock>
+                                    <StackPanel Grid.Row="1" d:IsHidden="True">
+                                        <Button Style="{StaticResource ButtonStyle}"   Command="{Binding ComCmd}" CommandParameter="116"  FontSize="30" Margin="5,30"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="PreView" d:IsHidden="True" ></Button>
+                                        <Button Style="{StaticResource ButtonStyle}"   Command="{Binding ComCmd}" CommandParameter="113"  FontSize="30" Margin="5,30"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="Delete" d:IsHidden="True" ></Button>
+                                        <Button Style="{StaticResource ButtonStyle}"   Command="{Binding ComCmd}" CommandParameter="114"  FontSize="30" Margin="5,30"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="Modify" d:IsHidden="True" ></Button>
+                                        <Button Style="{StaticResource ButtonStyle}"   Command="{Binding ComCmd}" CommandParameter="115"  FontSize="30" Margin="5,30"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="Add" d:IsHidden="True" ></Button>
+                                        <Button Style="{StaticResource ButtonStyle}"   Command="{Binding ComCmd}" CommandParameter="117"  FontSize="30" Margin="5,30"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="backUp" d:IsHidden="True" ></Button>
+
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem  Header="DrinkRecip Setting" FontSize="48" d:IsHidden="True">
+                            <Grid d:IsHidden="True">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="7*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border CornerRadius="10" Grid.Column="2" BorderBrush="Gray" BorderThickness="3" d:IsHidden="True" ></Border>
+                                <Grid Grid.Column="0" d:IsHidden="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="8*"/>
+                                        <RowDefinition Height="4*"/>
+                                    </Grid.RowDefinitions>
+                                    <Border CornerRadius="10" BorderBrush="Gray" BorderThickness="3" d:IsHidden="True" ></Border>
+                                    <Border CornerRadius="10" Grid.Row="2" BorderBrush="Gray" BorderThickness="3" d:IsHidden="True" ></Border>
+
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32" Text="User Recipe List" d:IsHidden="True"></TextBlock>
+                                    <ListView Grid.Row="1" ItemsSource="{Binding _EvoRecipe._lstRecipeInfo}" Tag="Recipe" SelectionChanged="ListView_SelectionChanged" Height="497" VerticalAlignment="Top" SelectionMode="Single" d:IsHidden="True">
+                                        <ListView.Template>
+                                            <ControlTemplate>
+                                                <Border CornerRadius="10" BorderBrush="Gray" BorderThickness="3">
+                                                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" >
+                                                        <ItemsPresenter />
+                                                    </ScrollViewer>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </ListView.Template>
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel IsItemsHost="True"/>
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="{x:Type ListViewItem}">
+                                                <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                            <Border Name="BD_Collector" CornerRadius="3" Background="DarkSeaGreen" Width="auto" Height="auto" Margin="5">
+                                                                <Label Content="{Binding Path=Name}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="36" />
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter TargetName="BD_Collector" Property="Background" Value="YellowGreen" />
+                                                                </Trigger>
+                                                                <Trigger Property="IsSelected" Value="True">
+                                                                    <Setter TargetName="BD_Collector" Property="Background" Value="DarkGreen" />
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                    </ListView>
+
+                                    <StackPanel Grid.Row="2" d:IsHidden="True" >
+                                        <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="96" Margin="40,5" FontSize="36"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Add" d:IsHidden="True" ></Button>
+                                        <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="97" Margin="40,5" FontSize="36"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Del" d:IsHidden="True" ></Button>
+                                        <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="98" Margin="40,5" FontSize="36"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Save" d:IsHidden="True" ></Button>
+                                        <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2" Margin="40,5" FontSize="36"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Back" d:IsHidden="True" ></Button>
+
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Column="1" Margin="10,0" d:IsHidden="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="4*"/>
+                                    </Grid.RowDefinitions>
+                                    <Border CornerRadius="10" BorderBrush="Gray" BorderThickness="3" Margin="0,5" d:IsHidden="True">
+                                        <Canvas Grid.Row="0" d:IsHidden="True">
+                                            <Canvas.Background>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FFBFBABA" Offset="0"/>
+                                                    <GradientStop Color="White" Offset="0.989"/>
+                                                </LinearGradientBrush>
+                                            </Canvas.Background>
+                                            <TextBlock Text="Name:" FontSize="32" Canvas.Left="34" Canvas.Top="13" d:IsHidden="True"></TextBlock>
+                                            <TextBox Text="{Binding _CrtRecipeInfo.Name}" MinWidth="400" FontSize="32" Canvas.Left="216" Canvas.Top="13" d:IsHidden="True"></TextBox>
+                                            <TextBlock Text="ID:" FontSize="32" Canvas.Left="34" Canvas.Top="77" d:IsHidden="True"></TextBlock>
+                                            <TextBlock Text="{Binding _CrtRecipeInfo.ID}" MinWidth="400" FontSize="32" Canvas.Left="216" Canvas.Top="77" d:IsHidden="True"></TextBlock>
+                                        </Canvas>
+                                    </Border>
+                                    <TabControl Name="tbrcp" Grid.Row="1" TabStripPlacement="Left" Background="WhiteSmoke" IsEnabled="False" d:IsHidden="True">
+                                        <TabItem Header="AdditionalInfo" VerticalAlignment="Center" d:IsHidden="True" >
+                                            <Canvas d:IsHidden="True">
+                                                <Viewbox Width="150" Height="150" Canvas.Left="384" Canvas.Top="10" d:IsHidden="True">
+                                                    <Image Source="{Binding _CrtRecipeInfo.ID, Converter={StaticResource IntToPicScr}}" d:IsHidden="True"></Image>
+                                                </Viewbox>
+                                                <Button Width="127" Height="30" FontSize="18" Canvas.Left="398" Canvas.Top="177" Click="Button_Click" d:IsHidden="True">Change Icon</Button>
+                                                <TextBlock FontSize="28" Text="Price" Canvas.Left="18" Canvas.Top="12" d:IsHidden="True"></TextBlock>
+                                                <TextBox FontSize="28" Text="{Binding _CrtRecipeInfo._publicInfo.price}" MinWidth="200" Canvas.Left="156" Canvas.Top="10" d:IsHidden="True"></TextBox>
+                                                <TextBlock FontSize="28" Text="Dispense" Canvas.Left="16" Canvas.Top="68" d:IsHidden="True" ></TextBlock>
+                                                <ComboBox FontSize="28" Text="Select Type" MinWidth="200" Canvas.Left="157" Canvas.Top="72" SelectedIndex="{Binding _CrtRecipeInfo._publicInfo.DispenseType, Mode=TwoWay, Converter={StaticResource IntToselectIndex}}" d:IsHidden="True">
+                                                    <ComboBoxItem Content="push and hold" d:IsHidden="True"></ComboBoxItem>
+                                                    <ComboBoxItem Content="portion" d:IsHidden="True"></ComboBoxItem>
+                                                </ComboBox>
+                                                <TextBlock FontSize="28" Text="Ledmode" Canvas.Left="14" Canvas.Top="138" d:IsHidden="True" />
+                                                <ComboBox FontSize="28" Text="Select Type" MinWidth="200" Canvas.Left="155" Canvas.Top="142" SelectedIndex="{Binding _CrtRecipeInfo._publicInfo.Ledmode, Mode=TwoWay, Converter={StaticResource IntToselectIndex}}" d:IsHidden="True">
+                                                    <ComboBoxItem Content="always on" d:IsHidden="True"/>
+                                                    <ComboBoxItem Content="flash" d:IsHidden="True"/>
+                                                    <ComboBoxItem Content="breath" d:IsHidden="True"/>
+                                                    <ComboBoxItem Content="circling" d:IsHidden="True"/>
+                                                    <ComboBoxItem Content="off" d:IsHidden="True"/>
+                                                </ComboBox>
+                                                <TextBlock FontSize="28" Text="Ledcolor" Canvas.Left="14" Canvas.Top="207" d:IsHidden="True" />
+                                                <ComboBox FontSize="28" Text="Select Type" MinWidth="200" Canvas.Left="155" Canvas.Top="209" SelectedIndex="{Binding _CrtRecipeInfo._publicInfo.LedColor, Mode=TwoWay, Converter={StaticResource IntToselectIndex}}" d:IsHidden="True">
+                                                    <ComboBoxItem d:IsHidden="True" >
+                                                        <Grid MinWidth="200" d:IsHidden="True">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="1*"/>
+                                                                <ColumnDefinition Width="3*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Border BorderBrush="Gray" BorderThickness="2" Grid.ColumnSpan="2" d:IsHidden="True"></Border>
+                                                            <Grid Background="Red" Margin="3" d:IsHidden="True"></Grid>
+                                                            <TextBlock Grid.Column="1" Text="red" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                                        </Grid>
+                                                    </ComboBoxItem>
+                                                    <ComboBoxItem d:IsHidden="True" >
+                                                        <Grid MinWidth="200" d:IsHidden="True">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="1*"/>
+                                                                <ColumnDefinition Width="3*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Border BorderBrush="Gray" BorderThickness="2" Grid.ColumnSpan="2" d:IsHidden="True"></Border>
+
+                                                            <Grid Background="Green" Margin="3" d:IsHidden="True"></Grid>
+                                                            <TextBlock Grid.Column="1"  Text="green" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                                        </Grid>
+                                                    </ComboBoxItem>
+                                                    <ComboBoxItem d:IsHidden="True" >
+                                                        <Grid MinWidth="200" d:IsHidden="True">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="1*"/>
+                                                                <ColumnDefinition Width="3*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Border BorderBrush="Gray" BorderThickness="2" Grid.ColumnSpan="2" d:IsHidden="True"></Border>
+
+                                                            <Grid Background="Blue" Margin="3" d:IsHidden="True"></Grid>
+                                                            <TextBlock Grid.Column="1" Text="blue" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                                        </Grid>
+                                                    </ComboBoxItem>
+                                                    <ComboBoxItem d:IsHidden="True" >
+                                                        <Grid MinWidth="200" d:IsHidden="True">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="1*"/>
+                                                                <ColumnDefinition Width="3*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Border BorderBrush="Gray" BorderThickness="2" Grid.ColumnSpan="2" d:IsHidden="True"></Border>
+
+                                                            <Grid Background="Orange" Margin="3" d:IsHidden="True"></Grid>
+                                                            <TextBlock Grid.Column="1" Text="orange" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                                        </Grid>
+                                                    </ComboBoxItem>
+                                                    <ComboBoxItem d:IsHidden="True" >
+                                                        <Grid MinWidth="200" d:IsHidden="True">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="1*"/>
+                                                                <ColumnDefinition Width="3*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Border BorderBrush="Gray" BorderThickness="2" Grid.ColumnSpan="2" d:IsHidden="True"></Border>
+
+                                                            <Grid Background="Yellow" Margin="3" d:IsHidden="True"></Grid>
+                                                            <TextBlock Grid.Column="1" Text="yellow" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                                        </Grid>
+                                                    </ComboBoxItem>
+                                                    <ComboBoxItem d:IsHidden="True" >
+                                                        <Grid MinWidth="200" d:IsHidden="True">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="1*"/>
+                                                                <ColumnDefinition Width="3*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Border BorderBrush="Gray" BorderThickness="2" Grid.ColumnSpan="2" d:IsHidden="True"></Border>
+
+                                                            <Grid Background="Purple" Margin="3" d:IsHidden="True"></Grid>
+                                                            <TextBlock Grid.Column="1" Text="purple" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                                        </Grid>
+                                                    </ComboBoxItem>
+                                                </ComboBox>
+                                                <TextBlock FontSize="28" Text="Intensity" Canvas.Left="14" Canvas.Top="269" d:IsHidden="True" />
+                                                <ComboBox FontSize="28" Text="Select Type" MinWidth="200" Canvas.Left="155" Canvas.Top="273"  SelectedIndex="{Binding _CrtRecipeInfo._publicInfo.LedIntensity, Mode=TwoWay, Converter={StaticResource IntToselectIndex}}" d:IsHidden="True">
+                                                    <ComboBoxItem Content="normal" d:IsHidden="True"/>
+                                                    <ComboBoxItem Content="weak" d:IsHidden="True"/>
+                                                </ComboBox>
+                                                <TextBlock FontSize="28" Text="Cupsensor" Canvas.Top="355" Canvas.Left="10" d:IsHidden="True" />
+
+                                                <ToggleButton  IsChecked="{Binding _CrtRecipeInfo._publicInfo.CupSensor, Mode=TwoWay, Converter={StaticResource IntToIsChecked}}" Style="{StaticResource ToggleButtonStyle2}" Width="100" Height="50" Canvas.Left="149" Canvas.Top="352" d:IsHidden="True">
+
+                                                </ToggleButton>
+                                                <TextBlock FontSize="28" Text="Countes" Canvas.Top="355" Canvas.Left="305" d:IsHidden="True" />
+                                                <ToggleButton  IsChecked="{Binding _CrtRecipeInfo._publicInfo.UseCount, Mode=TwoWay, Converter={StaticResource IntToIsChecked}}" Style="{StaticResource ToggleButtonStyle2}" Width="100" Height="50" Canvas.Left="425" Canvas.Top="352" d:IsHidden="True"/>
+                                                <TextBlock FontSize="28" Text="Strenght" Canvas.Top="426" Canvas.Left="10" d:IsHidden="True" />
+                                                <ToggleButton IsChecked="{Binding _CrtRecipeInfo._publicInfo.setStrength, Mode=TwoWay, Converter={StaticResource IntToIsChecked}}" Style="{StaticResource ToggleButtonStyle2}" Width="100" Height="50" Canvas.Left="149" Canvas.Top="423" d:IsHidden="True"/>
+                                                <TextBlock FontSize="28" Text="Volume" Canvas.Top="426" Canvas.Left="305" d:IsHidden="True" />
+                                                <ToggleButton IsChecked="{Binding _CrtRecipeInfo._publicInfo.setVolume, Mode=TwoWay, Converter={StaticResource IntToIsChecked}}" Style="{StaticResource ToggleButtonStyle2}" Width="100" Height="50" Canvas.Left="424" Canvas.Top="423" d:IsHidden="True"/>
+                                                <TextBlock FontSize="28" Text="Milk" Canvas.Top="499" Canvas.Left="10" d:IsHidden="True" />
+                                                <ToggleButton IsChecked="{Binding _CrtRecipeInfo._publicInfo.setMilk, Mode=TwoWay, Converter={StaticResource IntToIsChecked}}" Style="{StaticResource ToggleButtonStyle2}" Width="100" Height="50" Canvas.Left="149" Canvas.Top="496" d:IsHidden="True"/>
+                                                <TextBlock FontSize="28" Text="Sugar" Canvas.Top="502" Canvas.Left="305" d:IsHidden="True" />
+                                                <ToggleButton IsChecked="{Binding _CrtRecipeInfo._publicInfo.setSugar, Mode=TwoWay, Converter={StaticResource IntToIsChecked}}" Style="{StaticResource ToggleButtonStyle2}" Width="100" Height="50" Canvas.Left="424" Canvas.Top="499" d:IsHidden="True"/>
+                                                <TextBlock FontSize="28" Text="Cups" Canvas.Top="579" Canvas.Left="10" d:IsHidden="True" />
+                                                <ToggleButton IsChecked="{Binding _CrtRecipeInfo._publicInfo.setCups, Mode=TwoWay, Converter={StaticResource IntToIsChecked}}" Style="{StaticResource ToggleButtonStyle2}" Width="100" Height="50" Canvas.Left="149" Canvas.Top="576" d:IsHidden="True"/>
+                                            </Canvas>
+                                        </TabItem>
+
+                                        <TabItem Header="IngredientInfo" VerticalAlignment="Center" d:IsHidden="True">
+                                            <Grid Name="IngredientList" d:IsHidden="True">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="1*"/>
+                                                    <RowDefinition Height="6*"/>
+                                                    <RowDefinition Height="1.5*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid Grid.Row="0" d:IsHidden="True">
+                                                    <Grid.Background>
+                                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                            <GradientStop Color="#FF3886C7" Offset="0.077"/>
+                                                            <GradientStop Color="#FFC3DFF5" Offset="1"/>
+                                                        </LinearGradientBrush>
+                                                    </Grid.Background>
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Ingredient List" FontSize="48" d:IsHidden="True"></TextBlock>
+                                                </Grid>
+                                                <Grid Grid.Row="1" Background="Wheat" d:IsHidden="True">
+                                                    <ListView ItemsSource="{Binding _CrtRecipeInfo._lstIngredientStep}" SelectionMode="Single" Background="Silver" d:IsHidden="True">
+                                                        <ListView.Template>
+                                                            <ControlTemplate>
+                                                                <Grid>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="1*"/>
+                                                                        <RowDefinition Height="7*"/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid Grid.Row="0">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="2*"/>
+                                                                            <ColumnDefinition Width="4*"/>
+                                                                            <ColumnDefinition Width="4*"/>
+                                                                            <ColumnDefinition Width="4*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="2">
+                                                                            <TextBlock  Text="ID" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                                        </Border>
+                                                                        <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="2">
+                                                                            <TextBlock  Text="Name" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                                        </Border>
+                                                                        <Border  Grid.Column="2"  BorderBrush="Gray" BorderThickness="2">
+                                                                            <TextBlock Text="StartTime" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                                        </Border>
+                                                                        <Border  Grid.Column="3"  BorderBrush="Gray" BorderThickness="2">
+                                                                            <TextBlock Text="SpendTime" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                                        </Border>
+
+                                                                    </Grid>
+                                                                    <Border Grid.Row="1">
+                                                                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" >
+                                                                            <ItemsPresenter />
+                                                                        </ScrollViewer>
+                                                                    </Border>
+                                                                </Grid>
+                                                            </ControlTemplate>
+                                                        </ListView.Template>
+                                                        <ListView.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <StackPanel IsItemsHost="True"/>
+                                                            </ItemsPanelTemplate>
+                                                        </ListView.ItemsPanel>
+                                                        <ListView.ItemContainerStyle>
+                                                            <Style TargetType="{x:Type ListViewItem}">
+                                                                <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                                                                <Setter Property="Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                                            <Border x:Name="BD_Collector" Background="Transparent" Width="auto" Height="auto">
+                                                                                <Grid>
+                                                                                    <Grid.ColumnDefinitions>
+                                                                                        <ColumnDefinition Width="2*"/>
+                                                                                        <ColumnDefinition Width="4*"/>
+                                                                                        <ColumnDefinition Width="4*"/>
+                                                                                        <ColumnDefinition Width="4*"/>
+                                                                                    </Grid.ColumnDefinitions>
+                                                                                    <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="2">
+                                                                                        <TextBlock  Text="{Binding ID}" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                                                    </Border>
+                                                                                    <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="2">
+                                                                                        <TextBlock  Text="{Binding Name}" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                                                    </Border>
+                                                                                    <Border  Grid.Column="2"  BorderBrush="Gray" BorderThickness="2">
+                                                                                        <TextBlock   Text="{Binding StartTime}" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                                                    </Border>
+                                                                                    <Border  Grid.Column="3"  BorderBrush="Gray" BorderThickness="2">
+                                                                                        <TextBlock Text="{Binding UsedTime}" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                                                    </Border>
+                                                                                </Grid>
+                                                                            </Border>
+                                                                            <ControlTemplate.Triggers>
+                                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                                    <Setter TargetName="BD_Collector" Property="Background" Value="YellowGreen" />
+                                                                                </Trigger>
+                                                                                <Trigger Property="IsSelected" Value="True">
+                                                                                    <Setter TargetName="BD_Collector" Property="Background" Value="DarkGreen" />
+                                                                                </Trigger>
+                                                                            </ControlTemplate.Triggers>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Style>
+                                                        </ListView.ItemContainerStyle>
+                                                    </ListView>
+                                                </Grid>
+                                                <Grid Grid.Row="2" Background="LightBlue" d:IsHidden="True">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="1*"/>
+                                                        <ColumnDefinition Width="1*"/>
+                                                        <ColumnDefinition Width="1*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Button Grid.Column="0" Margin="30,10" Command="{Binding BtnCmd}" CommandParameter="112" d:IsHidden="True" >
+                                                        <Button.Background>
+                                                            <ImageBrush ImageSource="images/Add.png"/>
+                                                        </Button.Background>
+                                                    </Button>
+                                                    <Button Grid.Column="1" Margin="30,10" Command="{Binding BtnCmd}" CommandParameter="113" d:IsHidden="True">
+                                                        <Button.Background>
+                                                            <ImageBrush ImageSource="images/DEL.png"/>
+                                                        </Button.Background>
+                                                    </Button>
+                                                    <Button Grid.Column="2" Margin="30,10" Command="{Binding BtnCmd}" CommandParameter="114" d:IsHidden="True">
+                                                        <Button.Background>
+                                                            <ImageBrush ImageSource="images/OK.png"/>
+                                                        </Button.Background>
+                                                    </Button>
+                                                </Grid>
+                                            </Grid>
+                                        </TabItem>
+                                    </TabControl>
+                                </Grid>
+                                <Grid Grid.Column="2" d:IsHidden="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="14*"/>
+                                        <RowDefinition Height="87*"/>
+                                    </Grid.RowDefinitions>
+                                    <Border BorderBrush="Gray" BorderThickness="3" d:IsHidden="True"></Border>
+                                    <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True">Machine CMD</TextBlock>
+                                    <StackPanel Grid.Row="1" Name="spcmd" IsEnabled="False" d:IsHidden="True">
+                                        <Button Style="{StaticResource ButtonStyle}"   Command="{Binding ComCmd}" CommandParameter="128"  FontSize="30" Margin="5,30"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="PreView" d:IsHidden="True" ></Button>
+                                        <Button Style="{StaticResource ButtonStyle}"   Command="{Binding ComCmd}" CommandParameter="129"  FontSize="30" Margin="5,30"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="Delete" d:IsHidden="True" ></Button>
+                                        <Button Style="{StaticResource ButtonStyle}"   Command="{Binding ComCmd}" CommandParameter="130"  FontSize="30" Margin="5,30"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="Modify" d:IsHidden="True" ></Button>
+                                        <Button Style="{StaticResource ButtonStyle}"   Command="{Binding ComCmd}" CommandParameter="131"  FontSize="30" Margin="5,30"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="Add" d:IsHidden="True" ></Button>
+                                        <Button Style="{StaticResource ButtonStyle}"   Command="{Binding ComCmd}" CommandParameter="132"  FontSize="30" Margin="5,30"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="backUp" d:IsHidden="True" ></Button>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </Grid>
+            <Grid x:Name="Evo_Grd_CleanSet" Visibility="{Binding _UiData.is_Clean_visible, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter},ConverterParameter=Disabled}" d:IsHidden="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="8*"/>
+                </Grid.RowDefinitions>
+                <Border Background="WhiteSmoke" Grid.Row="0" BorderThickness="2" BorderBrush="Gray" d:IsHidden="True" >
+                    <TextBlock FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" d:IsHidden="True">Cleaning System</TextBlock>
+                </Border>
+                <Border Grid.Row="1" BorderThickness="2" BorderBrush="Gray" d:IsHidden="True">
+                    <Grid d:IsHidden="True">
+                        <TabControl d:IsHidden="True">
+                            <TabItem Header="Brew-Process" FontSize="36" d:IsHidden="True">
+                                <Grid d:IsHidden="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0" BorderBrush="BlueViolet" BorderThickness="1" d:IsHidden="True">
+                                        <Border.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FF2EC8F5" Offset="0.193"/>
+                                                <GradientStop Color="#FFD5DBDC" Offset="1"/>
+                                                <GradientStop Color="#FF80DDF8" Offset="0.576"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Grid d:IsHidden="True">
+                                            <TextBlock Text="Cycle Count" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="58,66,0,0" d:IsHidden="True"></TextBlock>
+                                            <TextBox Text="{Binding _CrtEVOCleaning.brewCleanProcess.CleanCnt}" MinWidth="300" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="529,63,0,0" d:IsHidden="True"></TextBox>
+                                            <TextBlock Text="CleanWater(ml) " HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="58,167,0,0" d:IsHidden="True"/>
+                                            <TextBox Text="{Binding _CrtEVOCleaning.brewCleanProcess.WaterValveOpenTime}" MinWidth="300" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="529,164,0,0" d:IsHidden="True"/>
+                                            <TextBlock Text="WaterWaitTime(ms)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="58,268,0,0" d:IsHidden="True"/>
+                                            <TextBox Text="{Binding _CrtEVOCleaning.brewCleanProcess.WaterPauseTime}" MinWidth="300" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="529,265,0,0" d:IsHidden="True"/>
+                                            <TextBlock Text="MotorRunTime(ms)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="58,370,0,0" d:IsHidden="True"/>
+                                            <TextBox Text="{Binding _CrtEVOCleaning.brewCleanProcess.WaterReleaseTime}" MinWidth="300" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="529,367,0,0" d:IsHidden="True"/>
+                                            <TextBlock Text="WaterOutTime(ms)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="58,468,0,0" d:IsHidden="True"/>
+                                            <TextBox Text="{Binding _CrtEVOCleaning.brewCleanProcess.BrewMotorRunTime}" MinWidth="300" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="529,465,0,0" d:IsHidden="True"/>
+                                            <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2" Margin="529,637,0,0" FontSize="48"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Content="Save" d:IsHidden="True" ></Button>
+                                            <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2" Margin="58,637,0,0" FontSize="48"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Content="Back" d:IsHidden="True" ></Button>
+                                        </Grid>
+                                    </Border>
+                                    <Border Grid.Column="1" BorderBrush="BlueViolet" BorderThickness="1" d:IsHidden="True">
+                                        <Grid d:IsHidden="True">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="7*"/>
+                                            </Grid.RowDefinitions>
+                                            <Border BorderBrush="Gray" BorderThickness="2" d:IsHidden="True">
+                                                <TextBlock Text="ComCmd" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" d:IsHidden="True"></TextBlock>
+                                            </Border>
+                                            <StackPanel Grid.Row="1" d:IsHidden="True">
+                                                <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2" Margin="20,100" FontSize="48"  VerticalAlignment="Top" HorizontalAlignment="Stretch"  Content="Set" d:IsHidden="True" />
+                                                <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2" Margin="20,100" FontSize="48"  VerticalAlignment="Top" HorizontalAlignment="Stretch"  Content="Refresh" d:IsHidden="True" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Grinder-Process" FontSize="36" d:IsHidden="True">
+                                <Grid d:IsHidden="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0" BorderBrush="BlueViolet" BorderThickness="1" d:IsHidden="True">
+                                        <Border.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FF2EC8F5" Offset="0.193"/>
+                                                <GradientStop Color="#FFD5DBDC" Offset="1"/>
+                                                <GradientStop Color="#FF80DDF8" Offset="0.576"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Grid d:IsHidden="True">
+                                            <TextBlock Text="Cycle Count" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="58,66,0,0" d:IsHidden="True"></TextBlock>
+                                            <TextBox Text="2" MinWidth="300" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="529,63,0,0" d:IsHidden="True"></TextBox>
+                                            <TextBlock Text="MotorRunTime(ml) " HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="58,167,0,0" d:IsHidden="True"/>
+                                            <TextBox Text="100" MinWidth="300" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="529,164,0,0" d:IsHidden="True"/>
+                                            <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2" Margin="529,637,0,0" FontSize="48"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Content="Save" d:IsHidden="True" ></Button>
+                                            <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2" Margin="58,637,0,0" FontSize="48"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Content="Back" d:IsHidden="True" ></Button>
+                                        </Grid>
+                                    </Border>
+                                    <Border Grid.Column="1" BorderBrush="BlueViolet" BorderThickness="1" d:IsHidden="True">
+                                        <Grid d:IsHidden="True">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="7*"/>
+                                            </Grid.RowDefinitions>
+                                            <Border BorderBrush="Gray" BorderThickness="2" d:IsHidden="True">
+                                                <TextBlock Text="ComCmd" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" d:IsHidden="True"></TextBlock>
+                                            </Border>
+                                            <StackPanel Grid.Row="1" d:IsHidden="True">
+                                                <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2" Margin="20,100" FontSize="48"  VerticalAlignment="Top" HorizontalAlignment="Stretch"  Content="Set" d:IsHidden="True" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Mixer-Process" FontSize="36" d:IsHidden="True">
+                                <Grid d:IsHidden="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0" BorderBrush="BlueViolet" BorderThickness="1" d:IsHidden="True">
+                                        <Border.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FF2EC8F5" Offset="0.193"/>
+                                                <GradientStop Color="#FFD5DBDC" Offset="1"/>
+                                                <GradientStop Color="#FF80DDF8" Offset="0.576"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Grid d:IsHidden="True">
+                                            <TextBlock Text="Cycle Count" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="58,66,0,0" d:IsHidden="True"></TextBlock>
+                                            <TextBox Text="2" MinWidth="300" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="529,63,0,0" d:IsHidden="True"></TextBox>
+                                            <TextBlock Text="CleanWater(ml) " HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="58,167,0,0" d:IsHidden="True"/>
+                                            <TextBox Text="100" MinWidth="300" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="529,164,0,0" d:IsHidden="True"/>
+                                            <TextBlock Text="MixerDelayTime(ms)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="58,268,0,0" d:IsHidden="True"/>
+                                            <TextBox Text="100" MinWidth="300" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="529,265,0,0" d:IsHidden="True"/>
+                                            <TextBlock Text="MixerRunTime(ms)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="58,370,0,0" d:IsHidden="True"/>
+                                            <TextBox Text="100" MinWidth="300" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="529,367,0,0" d:IsHidden="True"/>
+                                            <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2" Margin="529,637,0,0" FontSize="48"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Content="Save" d:IsHidden="True" ></Button>
+                                            <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2" Margin="58,637,0,0" FontSize="48"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Content="Back" d:IsHidden="True" ></Button>
+                                        </Grid>
+                                    </Border>
+                                    <Border Grid.Column="1" BorderBrush="BlueViolet" BorderThickness="1" d:IsHidden="True">
+                                        <Grid d:IsHidden="True">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="7*"/>
+                                            </Grid.RowDefinitions>
+                                            <Border BorderBrush="Gray" BorderThickness="2" d:IsHidden="True">
+                                                <TextBlock Text="ComCmd" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" d:IsHidden="True"></TextBlock>
+                                            </Border>
+                                            <StackPanel Grid.Row="1" d:IsHidden="True">
+                                                <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2" Margin="20,100" FontSize="48"  VerticalAlignment="Top" HorizontalAlignment="Stretch"  Content="Set" d:IsHidden="True" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </TabItem>
+                        </TabControl>
+
+                    </Grid>
+                </Border>
+            </Grid>
+            <Grid x:Name="Evo_Grd_DBSet" Visibility="{Binding _UiData.is_DB_visible, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter},ConverterParameter=Disabled}" d:IsHidden="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="6*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" BorderBrush="Gray" BorderThickness="2" d:IsHidden="True">
+                    <Grid d:IsHidden="True" >
+                        <Grid.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF2C8985" Offset="0"/>
+                                <GradientStop Color="#FF93ECE8" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <TextBlock Text="Machine DB Information" FontSize="80" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                    </Grid>
+                </Border>
+                <TabControl Grid.Row="1" d:IsHidden="True">
+                    <TabItem Header="Param Setting" FontSize="48" d:IsHidden="True">
+                        <Grid d:IsHidden="True">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="889*"/>
+                                <ColumnDefinition Width="311*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border BorderBrush="Gray" BorderThickness="2" Background="Silver" d:IsHidden="True">
+                                <Grid Grid.Column="0" d:IsHidden="True">
+                                    <TextBlock Text="DBID" FontSize="48" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,66,0,0" d:IsHidden="True"/>
+                                    <TextBox Text="{Binding _crtDBItem.DBID, Mode=TwoWay}" MinWidth="500" FontSize="48" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="302,66,0,0" d:IsHidden="True"/>
+                                    <TextBlock Text="DBValue" FontSize="48" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="28,189,0,0" d:IsHidden="True"/>
+                                    <TextBox Text="{Binding _crtDBItem.DBvalue, Mode=TwoWay}" MinWidth="500" FontSize="48" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="302,183,0,0" d:IsHidden="True"/>
+                                    <TextBlock Text="Description" FontSize="48" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="28,359,0,0" Height="92" d:IsHidden="True"/>
+                                    <TextBox Text="{Binding _crtDBItem.Description, Mode=TwoWay}" Width="500" TextWrapping="Wrap" FontSize="48" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="302,298,0,0" Height="207" d:IsHidden="True"/>
+                                    <Button VerticalAlignment="Bottom" Margin="28,0,580,52" Command="{Binding BtnCmd}" CommandParameter="129" Style="{StaticResource MyButton}" Height="60" FontSize="32" Content="Get" d:IsHidden="True"/>
+                                    <Button VerticalAlignment="Bottom" Margin="532,0,76,52" Command="{Binding BtnCmd}" CommandParameter="130" Style="{StaticResource MyButton}" Height="60" FontSize="32" Content="Save" d:IsHidden="True"/>
+
+                                </Grid>
+                            </Border>
+                            <Grid Grid.Column="1" d:IsHidden="True">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50*"/>
+                                    <RowDefinition Height="207*"/>
+                                </Grid.RowDefinitions>
+                                <Border BorderBrush="Gray" BorderThickness="2" Grid.Row="0" Background="WhiteSmoke" d:IsHidden="True">
+                                    <TextBlock Text="COM CMD" FontSize="48" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                </Border>
+                                <Border BorderBrush="Gray" BorderThickness="2" Grid.Row="1" Background="LightGray" d:IsHidden="True">
+                                    <Grid d:IsHidden="True" >
+                                        <StackPanel d:IsHidden="True">
+                                            <Button Style="{StaticResource ButtonStyle}" VerticalAlignment="Center" Command="{Binding ComCmd}" CommandParameter="144"  Margin="30,50"  Height="60" FontSize="36" Content="Set" d:IsHidden="True"/>
+                                            <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2"   FontSize="36" Height="60"  VerticalAlignment="Center"  Content="Back" Margin="30,0" d:IsHidden="True" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Maintenance Info" FontSize="48" d:IsHidden="True">
+                        <Grid d:IsHidden="True">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="889*"/>
+                                <ColumnDefinition Width="311*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border BorderBrush="Gray" BorderThickness="2" Background="Silver" d:IsHidden="True">
+                                <Grid Grid.Column="0" d:IsHidden="True">
+                                    <ListView SelectionMode="Single" Background="{x:Null}" ItemsSource="{Binding _tmMemberOrder}" d:IsHidden="True">
+                                        <ListView.Template>
+                                            <ControlTemplate>
+                                                <Border CornerRadius="0" BorderBrush="Silver" BorderThickness="3">
+                                                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" >
+                                                        <ItemsPresenter />
+                                                    </ScrollViewer>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </ListView.Template>
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel IsItemsHost="True"/>
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="{x:Type ListViewItem}">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="8*"></ColumnDefinition>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1">
+                                                                    <TextBlock Text="testid" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                                                                </Border>
+                                                                <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1">
+                                                                    <TextBlock Text="testValue" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                                                                </Border>
+                                                                <Border Grid.Column="2" BorderBrush="Gray" BorderThickness="1">
+                                                                    <TextBlock Text="testDescription" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                                                                </Border>
+                                                            </Grid>
+                                                            <ControlTemplate.Triggers>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                    </ListView>
+                                </Grid>
+                            </Border>
+                            <Grid Grid.Column="1" d:IsHidden="True">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50*"/>
+                                    <RowDefinition Height="207*"/>
+                                </Grid.RowDefinitions>
+                                <Border BorderBrush="Gray" BorderThickness="2" Grid.Row="0" Background="WhiteSmoke" d:IsHidden="True">
+                                    <TextBlock Text="COM CMD" FontSize="48" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                </Border>
+                                <Border BorderBrush="Gray" BorderThickness="2" Grid.Row="1" Background="LightGray" d:IsHidden="True">
+                                    <Grid d:IsHidden="True" >
+                                        <StackPanel d:IsHidden="True">
+                                            <Button Style="{StaticResource ButtonStyle}" VerticalAlignment="Center" Command="{Binding ComCmd}" CommandParameter="272"  Margin="30,50"  Height="60" FontSize="36" Content="Get" d:IsHidden="True"/>
+                                            <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2"   FontSize="36" Height="60"  VerticalAlignment="Center"  Content="Back" Margin="30,0" d:IsHidden="True" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+
+            </Grid>
+            <Grid x:Name="Evo_Grd_Update" Visibility="{Binding _UiData.is_Update_visible, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter},ConverterParameter=Disabled}" d:IsHidden="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="6*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" BorderBrush="Gray" BorderThickness="2" d:IsHidden="True">
+                    <Grid d:IsHidden="True" >
+                        <Grid.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF2C8985" Offset="0"/>
+                                <GradientStop Color="#FF93ECE8" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <TextBlock Text="Machine Update" FontSize="80" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsHidden="True"></TextBlock>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="1" Background="WhiteSmoke" d:IsHidden="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1" d:IsHidden="True">
+                        <ListBox FontSize="20" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding _EvoUpdate.UpdateInfo}" d:IsHidden="True"></ListBox>
+                    </Grid>
+                    <Grid Grid.Row="0" d:IsHidden="True">
+                        <Canvas d:IsHidden="True">
+                            <TextBlock Text="Recipe file:" FontSize="24" Canvas.Left="34" Canvas.Top="28" d:IsHidden="True"></TextBlock>
+                            <TextBox FontSize="24" MinWidth="600" Canvas.Left="34" Canvas.Top="65" Name="tbxrcp" Text="{Binding _EvoUpdate.RcpFileName, Mode=TwoWay}" Width="908" d:IsHidden="True"></TextBox>
+                            <Button Tag="RCP" Content="....." MinWidth="100" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Canvas.Left="947" Canvas.Top="65" Click="Button_Click_1" d:IsHidden="True"></Button>
+                            <Button Command="{Binding ComCmd}" CommandParameter="256" Content="transfer" MinWidth="100" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Canvas.Left="1090" Canvas.Top="65" d:IsHidden="True"></Button>
+
+                            <TextBlock Text="firmware file:" FontSize="24" Canvas.Left="34" Canvas.Top="128" d:IsHidden="True"></TextBlock>
+                            <TextBox FontSize="24" MinWidth="600" Canvas.Left="34" Canvas.Top="165" Name="tbxfirm" Text="{Binding _EvoUpdate.FirmFileName, Mode=TwoWay}" Width="908" d:IsHidden="True"></TextBox>
+                            <Button Tag="FIRM" Click="Button_Click_1" Content="....." MinWidth="100" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Canvas.Left="947" Canvas.Top="165" d:IsHidden="True"></Button>
+                            <Button Command="{Binding ComCmd}" CommandParameter="257" Content="transfer" MinWidth="100" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Canvas.Left="1090" Canvas.Top="165" d:IsHidden="True"></Button>
+                            <ProgressBar Width="908" Height="30" Canvas.Left="34" Canvas.Top="268" Maximum="{Binding _EvoUpdate.TotalAmount}" Value="{Binding _EvoUpdate.CrtAmount}" d:IsHidden="True"></ProgressBar>
+                            <Grid MinHeight="30" MinWidth="90" Canvas.Left="947" Canvas.Top="268" d:IsHidden="True">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="1" Text="/" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                <TextBlock Grid.Column="0"  Text="{Binding _EvoUpdate.CrtAmount, Mode=TwoWay}" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" d:IsHidden="True"></TextBlock>
+                                <TextBlock Grid.Column="2" Text="{Binding _EvoUpdate.TotalAmount, Mode=TwoWay}" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" d:IsHidden="True"></TextBlock>
+                            </Grid>
+                            <Button Style="{StaticResource ButtonStyle}" Command="{Binding BtnCmd}" CommandParameter="2" FontSize="36" Content="Back" Margin="0" Height="48" Canvas.Left="36" Canvas.Top="383" Width="178" d:IsHidden="True" />
+                        </Canvas>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Viewbox>
+</Window>
+<!--<ProgressBar Grid.Row="0" Style="{StaticResource ProgressBarStyle}" HorizontalAlignment="Left" Height="23" Margin="47,10,0,0" VerticalAlignment="Top" Width="410" Value="{Binding Path=CrtValue}" Maximum="{Binding Path=TotalValue}"/>-->

@@ -1,0 +1,124 @@
+﻿<Window x:Class="EVO.Tool.LogManage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="LogManage" Height="600" Width="800">
+    <Viewbox Stretch="Fill">
+        <Grid Height="600" Width="800">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="18*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0"  BorderBrush="Gray" BorderThickness="2">
+                <Grid>
+                    <Menu HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="28">
+                        <MenuItem FontSize="16" Header="File">
+                            <MenuItem FontSize="16" Header="Open" Tag="open" Click="menu_check"/>
+                            <Separator/>
+                            <MenuItem FontSize="16" Header="New" Tag="new" Click="menu_check"/>
+                            <Separator/>
+                            <MenuItem FontSize="16" Header="Save" Tag="save" Click="menu_check"/>
+                        </MenuItem>
+                    </Menu>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="9*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Name="grd_filter_fun" BorderBrush="Gray" BorderThickness="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">File Type</TextBlock>
+                            <ComboBox Grid.Row="1" Margin="20,0" FontSize="18" Name="cbtype">
+                                <ComboBoxItem>
+                                    <Grid Width="120">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border BorderBrush="Gray" BorderThickness="2" Grid.ColumnSpan="2"/>
+                                        <Grid Background="Red" Margin="3"/>
+                                        <TextBlock VerticalAlignment="Center" Text="Error" HorizontalAlignment="Center" Grid.Column="1"/>
+                                    </Grid>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <Grid Width="120">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border BorderBrush="Gray" BorderThickness="2" Grid.ColumnSpan="2"/>
+                                        <Grid Background="Yellow" Margin="3"/>
+                                        <TextBlock VerticalAlignment="Center" Text="Warning" HorizontalAlignment="Center" Grid.Column="1"/>
+                                    </Grid>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <Grid Width="120">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border BorderBrush="Gray" BorderThickness="2" Grid.ColumnSpan="2"/>
+                                        <Grid Background="Green" Margin="3"/>
+                                        <TextBlock VerticalAlignment="Center" Text="Operate" HorizontalAlignment="Center" Grid.Column="1"/>
+                                    </Grid>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <Grid Width="120">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border BorderBrush="Gray" BorderThickness="2" Grid.ColumnSpan="2"/>
+                                        <Grid Background="Black" Margin="3"/>
+                                        <TextBlock VerticalAlignment="Center" Text="All" HorizontalAlignment="Center" Grid.Column="1"/>
+                                    </Grid>
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Start Time" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                            <DatePicker Grid.Row="1" Margin="20,5" SelectedDate="{x:Static sys:DateTime.Now}"></DatePicker>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Stop Time" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                            <DatePicker Grid.Row="1" Margin="20,5"  SelectedDate="{x:Static sys:DateTime.Now}" ></DatePicker>
+                        </Grid>
+                        <Grid Grid.Row="4">
+                            <Button Margin="50,140" Content="Search" FontSize="20" Click="Button_Click"></Button>
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Border Grid.Column="1" Name="grd_file_fun"  BorderBrush="Gray" BorderThickness="2">
+                    <Grid>
+                        <ListBox Name="Fun_Show_txt" >
+
+                        </ListBox>
+                    </Grid>
+                </Border>
+
+            </Grid>
+        </Grid>
+    </Viewbox>
+</Window>

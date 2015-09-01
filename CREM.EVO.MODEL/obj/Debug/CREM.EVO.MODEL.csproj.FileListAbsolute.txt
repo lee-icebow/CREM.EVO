@@ -1,0 +1,7 @@
+D:\myproject\project\EVO-Platform\CREM.EVO\CREM.EVO.MODEL\bin\Debug\CREM.EVO.MODEL.dll
+D:\myproject\project\EVO-Platform\CREM.EVO\CREM.EVO.MODEL\bin\Debug\CREM.EVO.MODEL.pdb
+D:\myproject\project\EVO-Platform\EVO-APP\CREM.EVO.MODEL.dll
+D:\myproject\project\EVO-Platform\EVO-APP\CREM.EVO.MODEL.pdb
+D:\myproject\project\EVO-Platform\CREM.EVO\CREM.EVO.MODEL\obj\Debug\CREM.EVO.MODEL.csprojResolveAssemblyReference.cache
+D:\myproject\project\EVO-Platform\CREM.EVO\CREM.EVO.MODEL\obj\Debug\CREM.EVO.MODEL.dll
+D:\myproject\project\EVO-Platform\CREM.EVO\CREM.EVO.MODEL\obj\Debug\CREM.EVO.MODEL.pdb

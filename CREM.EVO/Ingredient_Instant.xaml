@@ -1,0 +1,109 @@
+﻿<Window x:Class="CREM.EVO.Ingredient_Instant"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="400">
+    <Viewbox Stretch="Fill">
+        <Grid Height="300" Width="400">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid  Grid.Row="0" Background="WhiteSmoke">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Name" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="1" Margin="5" Text="{Binding Name}"></TextBox>
+            </Grid>
+            <Grid  Grid.Row="1" Background="Gray">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Start Time" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Name="tbstm" Grid.Column="1" Margin="5"></TextBox>
+            </Grid>
+            <Grid Grid.Row="2" Background="WhiteSmoke">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="PackageOneType" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <ComboBox SelectionChanged="PackageoneType_Change" Name="cc1" Grid.Column="1" Margin="5"></ComboBox>
+                <TextBlock Name="tbpkg1" Grid.Column="2" Text="PackageOneAmt" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Name="cc2"  Grid.Column="3" Margin="5" Text="{Binding _InstantPowder.PackageOneAmt}"></TextBox>
+            </Grid>
+            <Grid Grid.Row="3" Background="Gray">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="PackageTwoType" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <ComboBox  SelectionChanged="PackagetwoType_Change" Name="cc3" Grid.Column="1" Margin="5"></ComboBox>
+                <TextBlock Name="tbpkg2" Grid.Column="2" Text="PackageTwoAmt" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Name="cc4"  Grid.Column="3" Margin="5" Text="{Binding _InstantPowder.PackageTwoAmt}"></TextBox>
+            </Grid>
+            <Grid Grid.Row="4" Background="WhiteSmoke">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Water Volume(ml)" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="1" Margin="5" Text="{Binding _InstantPowder.WaterVolume}"></TextBox>
+                <TextBlock Grid.Column="2" Text="PreFlush(ml)" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="3" Margin="5" Text="{Binding _InstantPowder.PreFlush}"></TextBox>
+            </Grid>
+            <Grid Grid.Row="5" Background="Gray">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="AfterFlush(ml)" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="1" Margin="5" Text="{Binding _InstantPowder.AfterFlush}"></TextBox>
+                <TextBlock Grid.Column="2" Text="MixerSpeed" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="3" Margin="5" Text="{Binding _InstantPowder.WhipperSpeed}"></TextBox>
+            </Grid>
+            <Grid Grid.Row="6" Background="WhiteSmoke">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                
+            </Grid>
+            <Grid Grid.Row="7" Background="Silver">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Margin="20,5" Grid.Column="0" Content="Save to this Ingredient" Click="Button_Click"></Button>
+                    <Button Margin="20,5" Grid.Column="1" Content="Save to New Ingredient" Click="Button_Click_1"></Button>
+                </Grid>
+                </Grid>
+        </Grid>
+    </Viewbox>
+</Window>
